@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New MotCle{% endblock %}
+
+{% block body %}
+    <h1>Create new MotCle</h1>
+
+    {{ include('mot_cle/_form.html.twig') }}
+
+    <a href="{{ path('app_mot_cle_index') }}">back to list</a>
+{% endblock %}
