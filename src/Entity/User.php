@@ -70,25 +70,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Commentaire::class, mappedBy: 'user')]
     private Collection $commentaires;
 
+    
+    
+    
     public function __construct()
     {
         $this->cours = new ArrayCollection();
         $this->quizzs = new ArrayCollection();
         $this->commentaires = new ArrayCollection();
-    }
-
-
-    public function __construct()
-    {
-        $this->createdAt = new \DateTimeImmutable();
-        $this->hasTestPremium = true;
-        $this->dateFinPremium = (new \DateTime())->modify('+1 day');
-        $this->nbToken = 0;
-    }
-
-
-    public function __construct()
-    {
         $this->createdAt = new \DateTimeImmutable();
         $this->hasTestPremium = true;
         $this->dateFinPremium = (new \DateTime())->modify('+1 day');
