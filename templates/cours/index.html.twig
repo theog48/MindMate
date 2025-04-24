@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Cours index{% endblock %}
+{% block title %}Cours index
+{% endblock %}
 
 {% block body %}
+<<<<<<< Updated upstream
     <h1>Liste des cours</h1>
 
     {# Formulaire pour générer un cours avec Mistral #}
@@ -49,4 +51,39 @@
     </table>
 
     <a href="{{ path('app_cours_new') }}" class="btn btn-success mt-3">Créer manuellement un nouveau cours</a>
+=======
+	<h1>Cours index</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Titre</th>
+				<th>Contenu</th>
+				<th>CreatedAt</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for cour in cours %}
+				<tr>
+					<td>{{ cour.id }}</td>
+					<td>{{ cour.titre }}</td>
+					<td>{{ cour.contenu }}</td>
+					<td>{{ cour.createatdatetime ? cour.createatdatetime|date('d-m-Y H:i:s') : '' }}</td>
+					<td>
+						<a href="{{ path('app_cours_show', {'id': cour.id}) }}">Voir</a>
+						<a href="{{ path('app_cours_edit', {'id': cour.id}) }}">Editer</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="5">Pas de Cours Trouvé</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a href="{{ path('app_cours_new') }}">Crée un nouveau cours</a>
+>>>>>>> Stashed changes
 {% endblock %}
