@@ -35,6 +35,48 @@
     </nav>
 
         {% block body %}{% endblock %}
+
+
+
+
+        <!-- footer -->
+        <footer >
+            <section class="footer-container" style="
+                        background-color: #030E1F !important;
+                        padding: 20px;
+                        max-width: 1075px;
+                        color: white;
+                        margin: 20px auto;
+                        display: flex;
+                        flex-direction: column; 
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 8px 8px 0 0;
+                        font-family: 'Bungee';
+                    ">
+
+
+                <div id="footer-top">
+                            <ul id="footer-list">
+                                <li><a href="#about">Home</a></li>
+                                <li><a href="#contact">Prix</a></li>
+                                <li><a href="#Contact">Contact</a></li>
+                                <li><a href="#terms">Terms </a></li>
+                            </ul>
+                    <div id="social-icons">
+                        <a href="#"><img src="{{ asset('assets/logo/facebook.svg') }}" alt="Facebook"></a>
+                        <a href="#"><img src="{{ asset('assets/logo/instagram.svg') }}" alt="Instagram"></a>
+                        <a href=""><img src="{{ asset('assets/logo/x.svg') }}" alt="Twitter"></a>
+                    </div>
+
+                </div>
+
+                    <div id="footer-bottom">
+                        <p>&copy; 2023 MINDMATE. All rights reserved.</p>
+                    </div>
+
+            </section>
+        </footer>
     </body>
 
 
