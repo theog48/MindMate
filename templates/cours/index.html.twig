@@ -11,7 +11,6 @@
                 <th>Id</th>
                 <th>Titre</th>
                 <th>Contenu</th>
-                <th>CreatedAt</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -21,7 +20,6 @@
                 <td>{{ cour.id }}</td>
                 <td>{{ cour.titre }}</td>
                 <td>{{ cour.contenu }}</td>
-                <td>{{ cour.createdAt ? cour.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('app_cours_show', {'id': cour.id}) }}">show</a>
                     <a href="{{ path('app_cours_edit', {'id': cour.id}) }}">edit</a>

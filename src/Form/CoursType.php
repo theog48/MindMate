@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Cours;
 use App\Entity\MotCle;
 use App\Entity\User;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -16,10 +17,7 @@ class CoursType extends AbstractType
     {
         $builder
             ->add('titre')
-            ->add('contenu')
-            ->add('createdAt', null, [
-                'widget' => 'single_text',
-            ])
+            ->add('contenu', TextType::class)
             ->add('user', EntityType::class, [
                 'class' => User::class,
                 'choice_label' => 'id',
@@ -28,6 +26,7 @@ class CoursType extends AbstractType
                 'class' => MotCle::class,
                 'choice_label' => 'id',
                 'multiple' => true,
+                'required' => false,
             ])
         ;
     }

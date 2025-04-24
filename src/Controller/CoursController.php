@@ -10,6 +10,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+// use GuzzleHttp\Client;
+use Symfony\Component\HttpClient\HttpClient;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 
 #[Route('/cours')]
 final class CoursController extends AbstractController
@@ -23,23 +26,79 @@ final class CoursController extends AbstractController
     }
 
     #[Route('/new', name: 'app_cours_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, CoursRepository $coursRepository): Response
     {
+        $reponse ='';
         $cour = new Cours();
         $form = $this->createForm(CoursType::class, $cour);
         $form->handleRequest($request);
+        $cour->setCreatedAt(new \DateTimeImmutable());
+        $response = '';
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($cour);
-            $entityManager->flush();
 
-            return $this->redirectToRoute('app_cours_index', [], Response::HTTP_SEE_OTHER);
+        if($request->isMethod('POST')) {
+            $title = $request->request->get('titre');
+            $description = $request->request->get('contenu');
+            $client = HttpClient::create();
+            $token = $_ENV['MISTRAL_API_KEY'];
+            // try{
+
+            //     $response = $client->request('POST', 'https://api.mistral.ai/v1/chat/completions', [
+            //         'headers' => [
+            //             'Authorization' => 'Bearer ' . $token,
+            //             'Content-Type' => 'application/json',
+            //         ],
+            //         'json' => [
+            //             "messages" => [
+            //                 [
+            //                     "role" => "user",
+            //                     "content" => "Je veux un cours sur le sujet suivant : $title. Voici le contenu du cours : $description"
+            //                 ]
+            //             ],
+            //             "model" => "mistral-large-latest",
+            //         ],
+            //     ]
+            //     );
+            // } catch(TransportExceptionInterface $e){
+            //     dd("Transport error: " . $e->getMessage());
+            // } catch(\Exception $e){
+            //     dd("Error: " . $e->getMessage());
+            // }
+            echo '<pre>';
+            var_dump($title);
+            var_dump($description);
+            echo '</pre>';
+            return $this->render('cours/new.html.twig', [
+                'form' => $form,
+                'response' => $response,
+                'token' => $token,
+            ]);
         }
 
+
         return $this->render('cours/new.html.twig', [
-            'cour' => $cour,
             'form' => $form,
+            'response' => $response,
+
+            // 'reponse' => $reponse,
         ]);
+
+        // $cour = new Cours();
+        // $form = $this->createForm(CoursType::class, $cour);
+        // $form->handleRequest($request);
+        // $cour->setCreatedAt(new \DateTimeImmutable());
+
+        // if ($form->isSubmitted() && $form->isValid()) {
+        //     $entityManager->persist($cour);
+        //     $entityManager->flush();
+
+        //     return $this->redirectToRoute('app_cours_index', [], Response::HTTP_SEE_OTHER);
+        // }
+
+        // return $this->render('cours/new.html.twig', [
+        //     'cour' => $cour,
+        //     'form' => $form,
+        // ]);
     }
 
     #[Route('/{id}', name: 'app_cours_show', methods: ['GET'])]
