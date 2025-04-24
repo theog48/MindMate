@@ -76,14 +76,14 @@ class Cours
         return $this;
     }
 
-    public function getCreateatdatetime(): ?\DateTimeInterface
+    public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
     }
 
-    public function setCreateatdatetime(\DateTimeInterface $createdAt): static
+    public function setCreatedAt(\DateTimeInterface $createdAt): static
     {
-        $this->createatdatetime = $createdAt;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
