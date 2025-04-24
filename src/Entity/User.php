@@ -70,9 +70,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Commentaire::class, mappedBy: 'user')]
     private Collection $commentaires;
 
-    
-    
-    
+
     public function __construct()
     {
         $this->cours = new ArrayCollection();
