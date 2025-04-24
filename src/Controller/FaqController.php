@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Faq;
 use App\Form\FaqType;
-use App\Repository\FagRepository;
+use App\Repository\FaqRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,10 +15,10 @@ use Symfony\Component\Routing\Attribute\Route;
 final class FaqController extends AbstractController
 {
     #[Route(name: 'app_faq_index', methods: ['GET'])]
-    public function index(FagRepository $fagRepository): Response
+    public function index(FaqRepository $faqRepository): Response
     {
         return $this->render('faq/index.html.twig', [
-            'faqs' => $fagRepository->findAll(),
+            'faqs' => $faqRepository->findAll(),
         ]);
     }
 
