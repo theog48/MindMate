@@ -3,25 +3,16 @@
 {% block title %}Cours index{% endblock %}
 
 {% block body %}
-    <h1>Liste des cours</h1>
+    <h1>Cours index</h1>
 
-    {# Formulaire pour générer un cours avec Mistral #}
-    <form method="get" action="{{ path('app_cours_generer') }}" class="mb-4">
-        <div style="display: flex; gap: 10px;">
-            <input type="text" name="sujet" placeholder="Entrez un sujet (ex: HTML, POO...)" required>
-            <button type="submit" class="btn btn-primary">Générer un cours avec Mistral</button>
-        </div>
-    </form>
-
-    {# Tableau des cours existants #}
     <table class="table">
         <thead>
             <tr>
-                <th>ID</th>
+                <th>Id</th>
                 <th>Titre</th>
                 <th>Contenu</th>
-                <th>Date de création</th>
-                <th>Actions</th>
+                <th>CreatedAt</th>
+                <th>actions</th>
             </tr>
         </thead>
         <tbody>
@@ -29,24 +20,20 @@
             <tr>
                 <td>{{ cour.id }}</td>
                 <td>{{ cour.titre }}</td>
-                <td>
-                    <div style="max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                        {{ cour.contenu }}
-                    </div>
-                </td>
+                <td>{{ cour.contenu }}</td>
                 <td>{{ cour.createdAt ? cour.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_cours_show', {'id': cour.id}) }}" class="btn btn-sm btn-info">Voir</a>
-                    <a href="{{ path('app_cours_edit', {'id': cour.id}) }}" class="btn btn-sm btn-warning">Modifier</a>
+                    <a href="{{ path('app_cours_show', {'id': cour.id}) }}">show</a>
+                    <a href="{{ path('app_cours_edit', {'id': cour.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">Aucun cours trouvé.</td>
+                <td colspan="5">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_cours_new') }}" class="btn btn-success mt-3">Créer manuellement un nouveau cours</a>
+    <a href="{{ path('app_cours_new') }}">Create new</a>
 {% endblock %}
