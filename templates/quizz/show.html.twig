@@ -4,143 +4,26 @@
 
 {% block body %}
     <h1>Quizz</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ quizz.id }}</td>
-            </tr>
-            <tr>
-                <th>Titre</th>
-                <td>{{ quizz.titre }}</td>
-            </tr>
-            <tr>
-                <th>Question1</th>
-                <td>{{ quizz.question1 }}</td>
-            </tr>
-            <tr>
-                <th>Reponse11</th>
-                <td>{{ quizz.reponse11 }}</td>
-            </tr>
-            <tr>
-                <th>Reponse12</th>
-                <td>{{ quizz.reponse12 }}</td>
-            </tr>
-            <tr>
-                <th>Reponse13</th>
-                <td>{{ quizz.reponse13 }}</td>
-            </tr>
-            <tr>
-                <th>Bonnereponse1</th>
-                <td>{{ quizz.bonnereponse1 }}</td>
-            </tr>
-            <tr>
-                <th>Userreponse1</th>
-                <td>{{ quizz.userreponse1 }}</td>
-            </tr>
-            <tr>
-                <th>Question2</th>
-                <td>{{ quizz.question2 }}</td>
-            </tr>
-            <tr>
-                <th>Reponse21</th>
-                <td>{{ quizz.reponse21 }}</td>
-            </tr>
-            <tr>
-                <th>Reponse22</th>
-                <td>{{ quizz.reponse22 }}</td>
-            </tr>
-            <tr>
-                <th>Reponse23</th>
-                <td>{{ quizz.reponse23 }}</td>
-            </tr>
-            <tr>
-                <th>BonneReponse2</th>
-                <td>{{ quizz.bonneReponse2 }}</td>
-            </tr>
-            <tr>
-                <th>ReponseUser2</th>
-                <td>{{ quizz.reponseUser2 }}</td>
-            </tr>
-            <tr>
-                <th>Question3</th>
-                <td>{{ quizz.question3 }}</td>
-            </tr>
-            <tr>
-                <th>Reponse31</th>
-                <td>{{ quizz.reponse31 }}</td>
-            </tr>
-            <tr>
-                <th>Reponse32</th>
-                <td>{{ quizz.reponse32 }}</td>
-            </tr>
-            <tr>
-                <th>Reponse33</th>
-                <td>{{ quizz.reponse33 }}</td>
-            </tr>
-            <tr>
-                <th>BonneReponse3</th>
-                <td>{{ quizz.bonneReponse3 }}</td>
-            </tr>
-            <tr>
-                <th>ReponseUser3</th>
-                <td>{{ quizz.reponseUser3 }}</td>
-            </tr>
-            <tr>
-                <th>Question4</th>
-                <td>{{ quizz.question4 }}</td>
-            </tr>
-            <tr>
-                <th>Question41</th>
-                <td>{{ quizz.question41 }}</td>
-            </tr>
-            <tr>
-                <th>Question42</th>
-                <td>{{ quizz.question42 }}</td>
-            </tr>
-            <tr>
-                <th>Question43</th>
-                <td>{{ quizz.question43 }}</td>
-            </tr>
-            <tr>
-                <th>BonneReponse4</th>
-                <td>{{ quizz.bonneReponse4 }}</td>
-            </tr>
-            <tr>
-                <th>ReponseUser4</th>
-                <td>{{ quizz.reponseUser4 }}</td>
-            </tr>
-            <tr>
-                <th>Question5</th>
-                <td>{{ quizz.question5 }}</td>
-            </tr>
-            <tr>
-                <th>Question51</th>
-                <td>{{ quizz.question51 }}</td>
-            </tr>
-            <tr>
-                <th>Question52</th>
-                <td>{{ quizz.question52 }}</td>
-            </tr>
-            <tr>
-                <th>Question53</th>
-                <td>{{ quizz.question53 }}</td>
-            </tr>
-            <tr>
-                <th>BonneReponse5</th>
-                <td>{{ quizz.bonneReponse5 }}</td>
-            </tr>
-            <tr>
-                <th>ReponseUser5</th>
-                <td>{{ quizz.reponseUser5 }}</td>
-            </tr>
-            <tr>
-                <th>Score</th>
-                <td>{{ quizz.score }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <p><strong>Score :</strong> {{ quizz.score }} / 5</p>
+    <form action="{{ path('app_quizz_submit_response', {id: quizz.id}) }}" method="POST">
+        <p>{{ quizz.question1 }}</p>
+        <input type="text" name="userreponse1">
+    
+        <p>{{ quizz.question2 }}</p>
+        <input type="text" name="reponseUser2">
+    
+        <p>{{ quizz.question3 }}</p>
+        <input type="text" name="reponseUser3">
+    
+        <p>{{ quizz.question4 }}</p>
+        <input type="text" name="reponseUser4">
+    
+        <p>{{ quizz.question5 }}</p>
+        <input type="text" name="reponseUser5">
+    
+        <button type="submit">Valider mes réponses</button>
+    </form>
+    
 
     <a href="{{ path('app_quizz_index') }}">back to list</a>
 

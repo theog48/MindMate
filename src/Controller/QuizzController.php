@@ -71,11 +71,40 @@ final class QuizzController extends AbstractController
     #[Route('/{id}', name: 'app_quizz_delete', methods: ['POST'])]
     public function delete(Request $request, Quizz $quizz, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$quizz->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $quizz->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($quizz);
             $entityManager->flush();
         }
 
         return $this->redirectToRoute('app_quizz_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+
+    #[Route('/{id}/submit', name: 'app_quizz_submit_response', methods: ['POST'])]
+    public function submitResponse(Request $request, Quizz $quizz, EntityManagerInterface $em): Response
+    {
+        $data = $request->request;
+
+        $score = 0;
+
+        if ($data->get('userreponse1') === $quizz->getBonnereponse1()) $score++;
+        if ($data->get('reponseUser2') === $quizz->getBonneReponse2()) $score++;
+        if ($data->get('reponseUser3') === $quizz->getBonneReponse3()) $score++;
+        if ($data->get('reponseUser4') === $quizz->getBonneReponse4()) $score++;
+        if ($data->get('reponseUser5') === $quizz->getBonneReponse5()) $score++;
+
+        // Facultatif : enregistrer les réponses de l’utilisateur
+        $quizz->setUserreponse1($data->get('userreponse1'));
+        $quizz->setReponseUser2($data->get('reponseUser2'));
+        $quizz->setReponseUser3($data->get('reponseUser3'));
+        $quizz->setReponseUser4($data->get('reponseUser4'));
+        $quizz->setReponseUser5($data->get('reponseUser5'));
+
+        $quizz->setScore($score);
+
+        $em->flush();
+
+        // Redirection vers la page de détails du quizz avec le score mis à jour
+        return $this->redirectToRoute('app_quizz_show', ['id' => $quizz->getId()]);
     }
 }
