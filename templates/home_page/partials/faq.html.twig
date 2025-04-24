@@ -1,0 +1,96 @@
+<section class="faq-section">
+    <div class="intro">
+        <h1>FAQ MINDMATE</h1>
+        <p class="subtitle"><strong>VOS QUESTIONS, NOS SOLUTIONS</strong></p>
+    </div>
+
+    <div class="faq-container">
+        <div class="faq-item">
+            <div class="faq-question">
+                <h3>Comment fonctionne MindMate pour résumer mes cours ?</h3>
+                <span class="arrow">↓</span>
+            </div>
+            <div class="faq-answer" style="display: none;">
+                <p>Grâce à l'API Mistral, vous pouvez copier-coller le contenu d'un cours dans un champ texte. L'application génère automatiquement un résumé vulgarisé, clair et adapté, prêt à être utilisé.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <h3>Les quiz interactifs sont-ils personnalisés selon mon cours ?</h3>
+                <span class="arrow">↓</span>
+            </div>
+            <div class="faq-answer" style="display: none;">
+                <p>Oui, nos quiz sont générés automatiquement en analysant le contenu de votre cours pour créer des questions pertinentes qui testent véritablement votre compréhension du sujet.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <h3>MindMate est-elle accessible gratuitement ?</h3>
+                <span class="arrow">↓</span>
+            </div>
+            <div class="faq-answer" style="display: none;">
+                <p>MindMate propose une version gratuite avec des fonctionnalités de base. Pour un accès illimité à toutes les fonctionnalités, une version premium est disponible.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <h3>Puis-je consulter mes statistiques d'apprentissage ?</h3>
+                <span class="arrow">↓</span>
+            </div>
+            <div class="faq-answer" style="display: none;">
+                <p>Absolument! MindMate vous fournit des statistiques détaillées sur vos progrès, vos résultats aux quiz et votre rythme d'apprentissage.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <h3>Comment consulter mon historique de résultats et de cours ?</h3>
+                <span class="arrow">↓</span>
+            </div>
+            <div class="faq-answer" style="display: none;">
+                <p>Tous vos cours et résultats sont sauvegardés dans votre espace personnel. Vous pouvez y accéder à tout moment via l'onglet "Historique".</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <h3>Que faire si je rencontre un problème avec MindMate ?</h3>
+                <span class="arrow">↓</span>
+            </div>
+            <div class="faq-answer" style="display: none;">
+                <p>Notre équipe support est disponible 7j/7. Vous pouvez nous contacter via le chat intégré ou par email à support@mindmate.com</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const questions = document.querySelectorAll('.faq-question');
+    
+    questions.forEach(question => {
+        question.addEventListener('click', function() {
+            const item = this.parentNode;
+            const answer = this.nextElementSibling;
+            const isActive = item.classList.contains('active');
+            
+            // Fermer toutes les réponses
+            document.querySelectorAll('.faq-answer').forEach(ans => {
+                ans.style.display = 'none';
+            });
+            document.querySelectorAll('.faq-item').forEach(it => {
+                it.classList.remove('active');
+            });
+            
+            // Ouvrir la réponse cliquée si elle était fermée
+            if (!isActive) {
+                answer.style.display = 'block';
+                item.classList.add('active');
+            }
+        });
+    });
+});
+</script>
