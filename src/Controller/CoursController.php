@@ -6,6 +6,7 @@ use App\Entity\Cours;
 use App\Entity\Quizz;
 use App\Form\CoursType;
 use App\Repository\CoursRepository;
+use App\Service\CoursService;
 use App\Repository\QuizzRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -203,6 +204,46 @@ final class CoursController extends AbstractController
         // ]);
     }
 
+    // #[Route('/generer', name: 'app_cours_generer', methods: ['GET'])]
+    // public function generer(Request $request, CoursService $coursService, EntityManagerInterface $em): Response
+    // {
+    //     $sujet = $request->query->get('sujet', 'Programmation orientée objet');
+
+    //     $donnees = $coursService->genererCours($sujet);
+
+    //     $cours = new Cours();
+    //     $cours->setTitre($donnees['cours']['titre'] ?? $sujet);
+    //     $cours->setContenu(json_encode($donnees, JSON_PRETTY_PRINT)); // ou extraire un champ précis
+    //     $cours->setCreatedAt(new \DateTime());
+
+    //     $em->persist($cours);
+    //     $em->flush();
+
+    //     $this->addFlash('success', 'Cours généré avec succès à partir de Mistral !');
+
+    //     return $this->redirectToRoute('app_cours_index');
+    // }
+
+    // #[Route('/generer', name: 'app_cours_generer', methods: ['GET'])]
+    // public function generer(Request $request, CoursService $coursService, EntityManagerInterface $em): Response
+    // {
+    //     $sujet = $request->query->get('sujet', 'Programmation orientée objet');
+
+    //     $donnees = $coursService->genererCours($sujet);
+
+    //     $cours = new Cours();
+    //     $cours->setTitre($donnees['cours']['titre'] ?? $sujet);
+    //     $cours->setContenu(json_encode($donnees, JSON_PRETTY_PRINT)); // ou extraire un champ précis
+    //     $cours->setCreatedAt(new \DateTime());
+
+    //     $em->persist($cours);
+    //     $em->flush();
+
+    //     $this->addFlash('success', 'Cours généré avec succès à partir de Mistral !');
+
+    //     return $this->redirectToRoute('app_cours_index');
+    // }
+
     #[Route('/{id}', name: 'app_cours_show', methods: ['GET'])]
     public function show(Cours $cour): Response
     {
@@ -232,7 +273,7 @@ final class CoursController extends AbstractController
     #[Route('/{id}', name: 'app_cours_delete', methods: ['POST'])]
     public function delete(Request $request, Cours $cour, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$cour->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $cour->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($cour);
             $entityManager->flush();
         }
