@@ -1,37 +1,130 @@
+
+    <style>
+        .features-section {
+            font-family: sans-serif;
+            background: #e2e2e2;
+            padding: 40px 20px;
+        }
+
+        .features-section h2 {
+            font-size: 2em;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .intro-content {
+            background-color: #1d3749;
+            padding: 20px;
+            color: white;
+            border-radius: 8px;
+            border: solid #030E1F;
+            border-width: 3px 3px 9px 3px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .intro-content h3 {
+            font-size: 1.5em;
+            font-weight: 900;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .intro-body {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .intro-body img {
+            width: 250px;
+            border-radius: 10px;
+        }
+
+        .intro-body p {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .feature-box {
+            background-color: #4E8A7D;
+            color: white;
+            padding: 65px;
+            width: 300px;
+            border-radius: 8px;
+            border: solid #030E1F;
+            border-width: 3px 3px 9px 3px;
+        }
+
+        .feature-box h4 {
+            font-size: 1.4em;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .feature-box p {
+            margin-top: 5px;
+        }
+
+        .feature-box ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        .feature-box li {
+            margin-bottom: 8px;
+        }
+    </style>
+
+
 <section class="features-section">
-<div class="intro">
-    <h2>Pourquoi MindMate ?<br>Comment ça marche ?</h2>
-    <div class="intro-content">
-    <h3>Simplifiez, Accélérez, Optimisez !</h3>
-    <img src="{{ asset('assets/images/features.png') }}" alt="Visuel IA et apprentissage">
-    <p>
-        MindMate est une plateforme innovante qui transforme l'apprentissage en une expérience efficace et accessible. 
-        Que vous soyez étudiant, professionnel ou curieux, notre technologie avancée et nos outils interactifs simplifient vos cours, 
-        accélèrent votre compréhension et valorisent votre mémorisation grâce à des résumés clairs et des quiz basés sur l’intelligence artificielle.
-    </p>
-    </div>
-</div>
-
-<div class="features">
-    <div class="feature1">
-    <h4>Gestion des cours</h4>
-    <p>Facilitez votre organisation</p>
-    <ul>
-        <li>📋 Copie de contenu : Insérez vos cours directement via un champ texte.</li>
-        <li>🧾 Résumé automatique : Obtenez un résumé clair et accessible grâce à l'API Mistral.</li>
-        <li>📚 Historique des cours : Consultez et gérez facilement vos cours enregistrés.</li>
-    </ul>
+    <div class="intro">
+        <h2>POURQUOI MINDMATE ?<br>COMMENT ÇA MARCHE ?</h2>
+        <div class="intro-content">
+            <h3>SIMPLIFIEZ, ACCÉLÉREZ, OPTIMISEZ !</h3>
+            <div class="intro-body">
+                <img src="{{ asset('assets/images/features.png') }}" alt="Visuel IA et apprentissage">
+                <p>
+                    MindMate est une plateforme innovante qui transforme l'apprentissage en une expérience efficace et accessible. 
+                    Que vous soyez étudiant, professionnel ou curieux, notre technologie avancée et nos outils interactifs simplifient vos cours, 
+                    accélèrent votre compréhension et valorisent votre mémorisation grâce à des résumés clairs et des quiz basés sur l'intelligence artificielle.
+                </p>
+            </div>
+        </div>
     </div>
 
-    <div class="feature2">
-    <h4>Quiz interactifs</h4>
-    <p>Testez et progressez</p>
-    <ul>
-        <li>🧩 Création de quiz : Basés sur vos cours pour tester vos connaissances.</li>
-        <li>✅ Validation instantanée : Résultats en temps réel.</li>
-        <li>🧮 Score final : Calcul automatique de vos progrès.</li>
-        <li>🕘 Historique des résultats : Accédez aux resultats de vos quiz précèdents.</li>
-    </ul>
+    <div class="features">
+        <div class="feature-box feature1">
+            <h4>GESTION DES COURS</h4>
+            <p>Facilitez votre organisation</p>
+            <ul>
+                <li>📋 <strong>Copie de contenu</strong> : Insérez vos cours directement via un champ texte.</li>
+                <li>🧾 <strong>Résumé automatique</strong> : Obtenez un résumé clair et accessible grâce à l'API Mistral.</li>
+                <li>📚 <strong>Historique des cours</strong> : Consultez et gérez facilement vos cours enregistrés.</li>
+            </ul>
+        </div>
+
+        <div class="feature-box feature2">
+            <h4>QUIZ INTERACTIFS</h4>
+            <p>Testez et progressez</p>
+            <ul>
+                <li>🧩 <strong>Création de quiz</strong> : Basés sur vos cours pour tester vos connaissances.</li>
+                <li>✅ <strong>Validation instantanée</strong> : Résultats en temps réel.</li>
+                <li>🧮 <strong>Score final</strong> : Calcul automatique de vos progrès.</li>
+                <li>🕘 <strong>Historique des résultats</strong> : Accédez aux résultats de vos quiz précédents.</li>
+            </ul>
+        </div>
     </div>
-</div>
 </section>
