@@ -326,3 +326,150 @@ h1{
 }
 
 
+.hero-block {
+    margin: 40px auto;
+    max-width: 1100px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#mind {
+    font-family: 'Bungee';
+	fon-style: bold;
+
+}
+
+p {
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 20px;
+    line-height: 1.5em;
+    margin-bottom: 20px;
+    color: black;
+}
+
+/* 🎓 Hero 1 – Academic Look */
+.hero-academic {
+    padding: 20px;
+    color: white;
+    border-radius: 8px;
+    border: solid #030E1F;
+    border-width: 3px 3px 9px 3px;
+    max-width: 900px;
+    margin: 0 auto; 
+    margin-top: 20px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start; 
+    justify-content: space-between;
+}
+
+.hero-academic .hero-text {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-end; 
+    text-align: right;
+    max-width: 60%;
+    width: 100%;
+}
+
+
+.hero-academic h1 {
+    font-family: 'Bungee';
+	font-style: bold;
+    font-size: 2.5em;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 10px; 
+    text-align: right; 
+}
+
+.hero-academic .lead {
+    font-size: 1.25em;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+.hero-academic .highlight {
+    color: #387478;
+	font-style: bold;
+
+}
+
+.hero-academic img {
+    width: 250px;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+
+
+/* 🚀 Hero 2 – Engaging Look */
+.hero-engaging {
+            background-color:#387478;
+            padding: 20px;
+            color: white;
+            border-radius: 8px;
+            border: solid #030E1F;
+            border-width: 3px 3px 9px 3px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+
+.hero-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-engaging img {
+    width: 250px;
+    border-radius: 10px;
+}
+
+.hero-engaging .text {
+    flex: 1;
+    min-width: 280px;
+
+}
+
+p{
+	font-size: 20px;
+	font-weight: 400;
+	text-align: right;
+	margin-top: 20px;
+	line-height: 1.5em;
+	margin-bottom: 20px;
+}
+
+.hero-engaging .title {
+    font-size: 25px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+#inscription {
+	font-size: 25px;
+	font-weight: 700;
+	text-align: center;
+	margin-top: 30px;
+	cursor: pointer;
+	color: black;
+	background-color: #629584;
+	font-style: bold;
+	border-radius: 8px;
+    border: solid #D9D9D9;
+	border-width: 3px 3px 9px 3px;
+	padding: 8px 13px; 
+    width: auto; 
+    height: auto;
+}
+
+
+
