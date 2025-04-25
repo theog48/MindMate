@@ -18,10 +18,6 @@ class CoursType extends AbstractType
         $builder
             ->add('titre')
             ->add('contenu', TextType::class)
-            ->add('user', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'id',
-            ])
             ->add('motCles', EntityType::class, [
                 'class' => MotCle::class,
                 'choice_label' => 'id',
