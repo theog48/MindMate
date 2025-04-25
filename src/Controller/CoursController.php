@@ -5,12 +5,11 @@ namespace App\Controller;
 use App\Entity\Cours;
 use App\Form\CoursType;
 use App\Repository\CoursRepository;
-use App\Service\CoursService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/cours')]
 final class CoursController extends AbstractController
@@ -24,22 +23,28 @@ final class CoursController extends AbstractController
     }
 
     #[Route('/new', name: 'app_cours_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $em): Response
     {
-        $cour = new Cours();
-        $form = $this->createForm(CoursType::class, $cour);
+        $cours = new Cours();
+        $cours->setUser($this->getUser());  // Assigner l'utilisateur connecté automatiquement
+
+        // Formulaire sans champs de date ni user_id
+        $form = $this->createForm(CoursType::class, $cours);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($cour);
-            $entityManager->flush();
+            $cours->setCreatedAt(new \DateTime()); // Assigner la date actuelle automatiquement
 
-            return $this->redirectToRoute('app_cours_index', [], Response::HTTP_SEE_OTHER);
+            $em->persist($cours);
+            $em->flush();
+
+            $this->addFlash('success', 'Cours créé avec succès.');
+
+            return $this->redirectToRoute('app_cours_index');
         }
 
         return $this->render('cours/new.html.twig', [
-            'cour' => $cour,
-            'form' => $form,
+            'form' => $form->createView(),
         ]);
     }
 
@@ -52,8 +57,9 @@ final class CoursController extends AbstractController
 
         $cours = new Cours();
         $cours->setTitre($donnees['cours']['titre'] ?? $sujet);
-        $cours->setContenu(json_encode($donnees, JSON_PRETTY_PRINT)); // ou extraire un champ précis
+        $cours->setContenu(json_encode($donnees, JSON_PRETTY_PRINT));
         $cours->setCreatedAt(new \DateTime());
+        $cours->setUser($this->getUser()); // Lier l'utilisateur connecté
 
         $em->persist($cours);
         $em->flush();
@@ -92,9 +98,11 @@ final class CoursController extends AbstractController
     #[Route('/{id}', name: 'app_cours_delete', methods: ['POST'])]
     public function delete(Request $request, Cours $cour, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $cour->getId(), $request->getPayload()->getString('_token'))) {
+        // Vérifier si le CSRF token est valide
+        if ($this->isCsrfTokenValid('delete' . $cour->getId(), $request->request->get('_token'))) {
             $entityManager->remove($cour);
             $entityManager->flush();
+            $this->addFlash('success', 'Cours supprimé avec succès.');
         }
 
         return $this->redirectToRoute('app_cours_index', [], Response::HTTP_SEE_OTHER);

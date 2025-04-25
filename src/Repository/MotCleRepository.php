@@ -16,6 +16,19 @@ class MotCleRepository extends ServiceEntityRepository
         parent::__construct($registry, MotCle::class);
     }
 
+    // // Méthode pour récupérer tous les tags existants (par exemple, tous les noms de mots-clés)
+    // public function findAllTags(): array
+    // {
+    //     // Utilisation de la méthode createQueryBuilder pour récupérer uniquement les noms de tags
+    //     $query = $this->createQueryBuilder('m')
+    //         ->select('m.nom') // Sélectionner seulement le nom du mot clé
+    //         ->getQuery();
+
+    //     // Exécuter la requête et retourner le résultat
+    //     return $query->getResult();
+    // }
+
+
     //    /**
     //     * @return MotCle[] Returns an array of MotCle objects
     //     */

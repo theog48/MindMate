@@ -6,7 +6,9 @@
 {% block body %}
 	<h1>Créer un nouveau cours</h1>
 
+	{# Inclure le formulaire avec le bouton de création #}
 	{% include 'cours/_form.html.twig' with {'form': form, 'button_label': 'Créer'} %}
 
+	{# Bouton pour retourner à la liste des cours #}
 	<a href="{{ path('app_cours_index') }}" class="btn btn-secondary mt-3">Mes Cours</a>
 {% endblock %}
