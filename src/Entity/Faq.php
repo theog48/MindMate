@@ -2,10 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\FagRepository;
+use App\Repository\FaqRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: FagRepository::class)]
+#[ORM\Entity(repositoryClass: FaqRepository::class)]
 class Faq
 {
     #[ORM\Id]

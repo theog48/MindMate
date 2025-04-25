@@ -1,71 +1,59 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>"> {% block stylesheets %}{% endblock %}
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-    </head>
-    <body>
-
-
-
-
-    <!-- header -->
-    <nav id="navbar">
-        <div id="logo-container"> MINDMATE </div>
-        <!-- navbar -->
-        <ul id="nav-list">
-            <li><a href="#features">Features</a></li>
-            <li><a href="#prix">Prix</a></li>
-            <li><a href="#avis">Avis</a></li>
-            <li><a href="#faq">FAQ</a></li>
-        </ul>
-
-        <!-- links -->
-        <div id="links"> 
-        <a href="#login" id="login-button">Login</a>
-        <a href="#register" id="register-button">Register</a>
-        </div>
-    </nav>
-
-        {% block body %}{% endblock %}
+		{% block javascripts %}
+			{% block importmap %}
+				{{ importmap('app') }}
+			{% endblock %}
+		{% endblock %}
+	</head>
+	<body>
+		{% block body %}{% endblock %}
 
 
+		<!-- footer -->
+		<footer>
+			<section class="footer-container">
 
 
-        <!-- footer -->
-        <footer >
-            <section class="footer-container" >
+				<div id="footer-top">
+					<ul id="footer-list">
+						<li>
+							<a href="#about">Home</a>
+						</li>
+						<li>
+							<a href="#contact">Prix</a>
+						</li>
+						<li>
+							<a href="#Contact">Contact</a>
+						</li>
+						<li>
+							<a href="#terms">Terms
+							</a>
+						</li>
+					</ul>
+					<div id="social-icons">
+						<a href="#"><img src="{{ asset('assets/logo/facebook.svg') }}" alt="Facebook"></a>
+						<a href="#"><img src="{{ asset('assets/logo/instagram.svg') }}" alt="Instagram"></a>
+						<a href="#"><img src="{{ asset('assets/logo/x.svg') }}" alt="Twitter"></a>
+					</div>
 
+				</div>
 
-                <div id="footer-top">
-                            <ul id="footer-list">
-                                <li><a href="#about">Home</a></li>
-                                <li><a href="#contact">Prix</a></li>
-                                <li><a href="#Contact">Contact</a></li>
-                                <li><a href="#terms">Terms </a></li>
-                            </ul>
-                    <div id="social-icons">
-                        <a href="#"><img src="{{ asset('assets/logo/facebook.svg') }}" alt="Facebook"></a>
-                        <a href="#"><img src="{{ asset('assets/logo/instagram.svg') }}" alt="Instagram"></a>
-                        <a href="#"><img src="{{ asset('assets/logo/x.svg') }}" alt="Twitter"></a>
-                    </div>
+				<div id="footer-bottom">
+					<p>&copy; 2023 MINDMATE. All rights reserved.</p>
+				</div>
 
-                </div>
-
-                    <div id="footer-bottom">
-                        <p>&copy; 2023 MINDMATE. All rights reserved.</p>
-                    </div>
-
-            </section>
-        </footer>
-    </body>
+			</section>
+		</footer>
+	</body>
 
 
 </html>

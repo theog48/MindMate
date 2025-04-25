@@ -22,7 +22,7 @@
 					<td>{{ cour.id }}</td>
 					<td>{{ cour.titre }}</td>
 					<td>{{ cour.contenu }}</td>
-					<td>{{ cour.createatdatetime ? cour.createatdatetime|date('d-m-Y H:i:s') : '' }}</td>
+					<td>{{ cour.createdAt ? cour.createdAt|date('d-m-Y H:i:s') : '' }}</td>
 					<td>
 						<a href="{{ path('app_cours_show', {'id': cour.id}) }}">Voir</a>
 						<a href="{{ path('app_cours_edit', {'id': cour.id}) }}">Editer</a>

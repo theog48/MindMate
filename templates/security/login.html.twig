@@ -7,6 +7,14 @@
         {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
         {% endif %}
+        {% if(is_granted('ROLE_PAID')) %}
+            <div class="alert alert-info">You are logged in as a paid user.</div>
+        {% elseif (is_granted('ROLE_USER')) %}
+            <div class="alert alert-warning">You are logged in as an unpaid user.</div>
+        {% else %}
+            <div class="alert alert-secondary">You are not logged in.</div>
+            
+        {% endif %}
 
         {% if app.user %}
             <div class="mb-3">

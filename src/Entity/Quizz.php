@@ -31,7 +31,7 @@ class Quizz
     #[ORM\Column(length: 255)]
     private ?string $bonnereponse1 = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $userreponse1 = null;
 
     #[ORM\Column(length: 255)]
@@ -49,7 +49,7 @@ class Quizz
     #[ORM\Column(length: 255)]
     private ?string $bonneReponse2 = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $reponseUser2 = null;
 
     #[ORM\Column(length: 255)]
@@ -67,46 +67,46 @@ class Quizz
     #[ORM\Column(length: 255)]
     private ?string $bonneReponse3 = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $reponseUser3 = null;
 
     #[ORM\Column(length: 255)]
     private ?string $question4 = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $question41 = null;
+    private ?string $reponse41 = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $question42 = null;
+    private ?string $reponse42 = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $question43 = null;
+    private ?string $reponse43 = null;
 
     #[ORM\Column(length: 255)]
     private ?string $bonneReponse4 = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $reponseUser4 = null;
 
     #[ORM\Column(length: 255)]
     private ?string $question5 = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $question51 = null;
+    private ?string $reponse51 = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $question52 = null;
+    private ?string $reponse52 = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $question53 = null;
+    private ?string $reponse53 = null;
 
     #[ORM\Column(length: 255)]
     private ?string $bonneReponse5 = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $reponseUser5 = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $score = null;
 
     #[ORM\ManyToOne(inversedBy: 'quizzs')]
@@ -362,38 +362,38 @@ class Quizz
         return $this;
     }
 
-    public function getQuestion41(): ?string
+    public function getReponse41(): ?string
     {
-        return $this->question41;
+        return $this->reponse41;
     }
 
-    public function setQuestion41(string $question41): static
+    public function setReponse41(string $reponse41): static
     {
-        $this->question41 = $question41;
+        $this->reponse41 = $reponse41;
 
         return $this;
     }
 
-    public function getQuestion42(): ?string
+    public function getReponse42(): ?string
     {
-        return $this->question42;
+        return $this->reponse42;
     }
 
-    public function setQuestion42(string $question42): static
+    public function setReponse42(string $reponse42): static
     {
-        $this->question42 = $question42;
+        $this->reponse42 = $reponse42;
 
         return $this;
     }
 
-    public function getQuestion43(): ?string
+    public function getReponse43(): ?string
     {
-        return $this->question43;
+        return $this->reponse43;
     }
 
-    public function setQuestion43(string $question43): static
+    public function setReponse43(string $reponse43): static
     {
-        $this->question43 = $question43;
+        $this->reponse43 = $reponse43;
 
         return $this;
     }
@@ -434,38 +434,38 @@ class Quizz
         return $this;
     }
 
-    public function getQuestion51(): ?string
+    public function getReponse51(): ?string
     {
-        return $this->question51;
+        return $this->reponse51;
     }
 
-    public function setQuestion51(string $question51): static
+    public function setReponse51(string $reponse51): static
     {
-        $this->question51 = $question51;
+        $this->reponse51 = $reponse51;
 
         return $this;
     }
 
-    public function getQuestion52(): ?string
+    public function getReponse52(): ?string
     {
-        return $this->question52;
+        return $this->reponse52;
     }
 
-    public function setQuestion52(string $question52): static
+    public function setReponse52(string $reponse52): static
     {
-        $this->question52 = $question52;
+        $this->reponse52 = $reponse52;
 
         return $this;
     }
 
-    public function getQuestion53(): ?string
+    public function getReponse53(): ?string
     {
-        return $this->question53;
+        return $this->reponse53;
     }
 
-    public function setQuestion53(string $question53): static
+    public function setReponse53(string $reponse53): static
     {
-        $this->question53 = $question53;
+        $this->reponse53 = $reponse53;
 
         return $this;
     }
