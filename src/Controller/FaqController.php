@@ -4,27 +4,31 @@ namespace App\Controller;
 
 use App\Entity\Faq;
 use App\Form\FaqType;
-use App\Repository\FagRepository;
+use App\Repository\FaqRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
+
 #[Route('/faq')]
 final class FaqController extends AbstractController
 {
     #[Route(name: 'app_faq_index', methods: ['GET'])]
-    public function index(FagRepository $fagRepository): Response
+    public function index(FaqRepository $faqRepository): Response
     {
         return $this->render('faq/index.html.twig', [
-            'faqs' => $fagRepository->findAll(),
+            'faqs' => $faqRepository->findAll(),
         ]);
     }
 
     #[Route('/new', name: 'app_faq_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
+
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $faq = new Faq();
         $form = $this->createForm(FaqType::class, $faq);
         $form->handleRequest($request);
@@ -53,6 +57,9 @@ final class FaqController extends AbstractController
     #[Route('/{id}/edit', name: 'app_faq_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Faq $faq, EntityManagerInterface $entityManager): Response
     {
+
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $form = $this->createForm(FaqType::class, $faq);
         $form->handleRequest($request);
 
@@ -71,7 +78,11 @@ final class FaqController extends AbstractController
     #[Route('/{id}', name: 'app_faq_delete', methods: ['POST'])]
     public function delete(Request $request, Faq $faq, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$faq->getId(), $request->getPayload()->getString('_token'))) {
+
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
+
+        if ($this->isCsrfTokenValid('delete' . $faq->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($faq);
             $entityManager->flush();
         }

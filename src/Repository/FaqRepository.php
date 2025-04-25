@@ -2,22 +2,22 @@
 
 namespace App\Repository;
 
-use App\Entity\Fag;
+use App\Entity\Faq;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Fag>
+ * @extends ServiceEntityRepository<Faq>
  */
 class FaqRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Fag::class);
+        parent::__construct($registry, Faq::class);
     }
 
 //    /**
-//     * @return Fag[] Returns an array of Fag objects
+//     * @return Faq[] Returns an array of Faq objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -31,7 +31,7 @@ class FaqRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Fag
+//    public function findOneBySomeField($value): ?Faq
 //    {
 //        return $this->createQueryBuilder('f')
 //            ->andWhere('f.exampleField = :val')
