@@ -1,0 +1,39 @@
+{# {{ include('commentaire/index.html.twig')}} #}
+
+
+
+<h1 class="titre">Avis des utilisateurs</h1>
+
+<div class="commentaires-container">
+    {% for commentaire in commentaires %}
+        <div class="card">
+            <h3>{{ commentaire.user.nom }}</h3>
+            <p class="comment-content">"{{ commentaire.content }}"</p>
+            
+            <p><strong>Note:</strong>
+                {% for i in 1..5 %}
+                    {% if i <= commentaire.note %}
+                        <img src="{{ asset('assets/logo/star1.svg') }}" alt="star">
+                    {% else %}
+                        <img src="{{ asset('assets/logo/star2.svg') }}" alt="empty star">
+                    {% endif %}
+                {% endfor %}
+                ({{ commentaire.note }}/5)
+            </p>
+
+            {# Optional actions, you can uncomment these if needed #}
+            {# 
+            <div class="card-actions">
+                <a href="{{ path('app_commentaire_show', {'id': commentaire.id}) }}">Voir</a> 
+                <a href="{{ path('app_commentaire_edit', {'id': commentaire.id}) }}">Modifier</a>
+            </div> 
+            #}
+        </div>
+    {% else %}
+        <p>Aucun commentaire trouvé.</p>
+    {% endfor %}
+</div>
+
+
+
+
