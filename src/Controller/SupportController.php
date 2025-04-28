@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Form\SupportType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,9 +17,13 @@ final class SupportController extends AbstractController
     public function index(Request $request, MailerInterface $mailer): Response
     {
         $user = $this->getUser();
-        if ($user === null) {
+        if ($user instanceof User === null) {
             return $this->redirectToRoute('app_login');
         }
+        if($user instanceof User){
+            $email = $user->getEmail();
+        }
+
 
         $form = $this->createForm(SupportType::class);
         $form->handleRequest($request);
@@ -26,7 +31,7 @@ final class SupportController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $email = (new Email())
-            ->from($user->getEmail())
+            ->from($email)
             ->to('support.mindmate@protonmail.com')
             ->subject($formData['objet'])
             ->text($formData['message'])
