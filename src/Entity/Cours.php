@@ -19,7 +19,7 @@ class Cours
     #[ORM\Column(length: 255)]
     private ?string $titre = null;
 
-    #[ORM\Column(length: 5000)]
+    #[ORM\Column(type: Types::TEXT)]
     private ?string $contenu = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
