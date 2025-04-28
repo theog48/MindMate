@@ -4,37 +4,42 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Cours index</h1>
+    <h1>Liste des cours</h1>
 
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Titre</th>
-				<th>Contenu</th>
-				<th>CreatedAt</th>
-				<th>actions</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for cour in cours %}
-				<tr>
-					<td>{{ cour.id }}</td>
-					<td>{{ cour.titre }}</td>
-					<td>{{ cour.contenu }}</td>
-					<td>{{ cour.createdAt ? cour.createdAt|date('d-m-Y H:i:s') : '' }}</td>
-					<td>
-						<a href="{{ path('app_cours_show', {'id': cour.id}) }}">Voir</a>
-						<a href="{{ path('app_cours_edit', {'id': cour.id}) }}">Editer</a>
-					</td>
-				</tr>
-			{% else %}
-				<tr>
-					<td colspan="5">Pas de Cours Trouvé</td>
-				</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+    {# Tableau des cours existants #}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Titre</th>
+                <th>Contenu</th>
+                <th>Date de création</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cour in cours %}
+            <tr>
+                <td>{{ cour.id }}</td>
+                <td>{{ cour.titre }}</td>
+                <td>
+                    <div style="max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                        {{ cour.contenu }}
+                    </div>
+                </td>
+                <td>{{ cour.createdAt ? cour.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_cours_show', {'id': cour.id}) }}" class="btn btn-sm btn-info">Voir</a>
+                    <a href="{{ path('app_cours_edit', {'id': cour.id}) }}" class="btn btn-sm btn-warning">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Aucun cours trouvé.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
 	<a href="{{ path('app_cours_new') }}">Crée un nouveau cours</a>
 {% endblock %}
