@@ -1,16 +1,117 @@
 <!-- _form.html.twig -->
 {{ form_start(form) }}
 
-<div class="mb-3">
-	<label for="titre">Titre de votre cours :</label>
-	{{ form_widget(form.titre, {'attr': {'class': 'form-control', 'placeholder': 'Titre'}}) }}
-</div>
+<div class="page-container">
 
-<div class="mb-3">
-	<label for="contenu">Entrez votre cours ici :</label>
-	{{ form_widget(form.contenu, {'attr': {'class': 'form-control', 'rows': 6, 'placeholder': 'Contenu'}}) }}
-</div>
+    <h1 class="page-title">Contactez le support</h1>
 
-<button class="btn btn-primary">{{ button_label|default('Créer le cours') }}</button>
+    <p class="page-description">
+        Saisissez votre cours : <br>
+        <strong>MindMate</strong> génère votre résumé et votre quiz en quelques instants.
+    </p>
+
+    <div class="form-field">
+        {{ form_widget(form.titre, {
+            'attr': {
+                'class': 'input-title',
+                'placeholder': 'Titre de votre cours'
+            }
+        }) }}
+    </div>
+
+    <div class="form-field">
+        {{ form_widget(form.contenu, {
+            'attr': {
+                'class': 'textarea-content',
+                'placeholder': 'Entrez votre cours ici'
+            }
+        }) }}
+    </div>
+
+    <button type="submit" class="submit-button">
+        {{ button_label|default('Créer un cours') }}
+    </button>
+
+</div>
 
 {{ form_end(form) }}
+<style>
+/* Structure générale */
+.page-container {
+    min-height: 100vh;
+    background-color: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Titres */
+.page-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #222;
+    text-transform: uppercase;
+}
+
+.page-description {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Champs */
+.form-field {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+}
+
+/* Input pour le titre */
+.input-title {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+	border-radius: 8px;
+    border: solid #030E1F;
+}
+
+/* Textarea pour le cours */
+.textarea-content {
+    width: 100%;
+    height: 300px; /* Plus grand */
+    padding: 15px;
+    border: 2px solid #000;
+    border-radius: 10px;
+    font-size: 16px;
+    resize: vertical;
+    box-sizing: border-box;
+	border-radius: 8px;
+    border: solid #030E1F;
+    border-width: 3px 3px 9px 3px;
+}
+
+/* Bouton */
+.submit-button {
+    background-color: #000;
+    color: #fff;
+    font-weight: bold;
+    padding: 14px 40px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #333;
+}
+</style>
