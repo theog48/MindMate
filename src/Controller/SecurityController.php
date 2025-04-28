@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,23 +20,15 @@ class SecurityController extends AbstractController
         $user = $security->getUser();
 
         if ($user) {
-            // Vérifie si l'utilisateur a un test premium actif
+            // Vérifie si la date de fin du premium est dépassée
             if ($user->HasTestPremium() && $user->getDateFinPremium() instanceof \DateTimeInterface) {
                 // Si la date de fin du premium est dépassée, désactive le premium
                 if ($user->getDateFinPremium() <= new \DateTimeImmutable()) {
-                    // Si l'utilisateur n'a pas payé, désactiver le premium
-                    $user->setHasTestPremium(false);
+                    $user->setHasTestPremium(false);  // Utiliser setHasTestPremium pour modifier l'attribut
 
                     // Met à jour la base de données avec la nouvelle valeur pour hasTestPremium
                     $entityManager->persist($user);
                     $entityManager->flush();
-
-                    // Supprimer le rôle 'ROLE_PAID' si l'utilisateur n'a pas payé
-                    if (!in_array('ROLE_PAID', $user->getRoles())) {
-                        $user->setRoles(array_diff($user->getRoles(), ['ROLE_PAID']));
-                        $entityManager->persist($user);
-                        $entityManager->flush();
-                    }
                 }
 
                 // Assurer que l'utilisateur a le rôle 'ROLE_USER' après expiration du test premium
@@ -46,11 +37,6 @@ class SecurityController extends AbstractController
                     $entityManager->persist($user);
                     $entityManager->flush();
                 }
-            }
-
-            // Si l'utilisateur a payé (par exemple via une transaction), on garde le rôle 'ROLE_PAID'
-            if (in_array('ROLE_PAID', $user->getRoles())) {
-                // Ne fait rien, le rôle "ROLE_PAID" est maintenu pour les utilisateurs payants
             }
         }
 
