@@ -5,14 +5,6 @@
 {% block body %}
     <h1>Liste des cours</h1>
 
-    {# Formulaire pour générer un cours avec Mistral #}
-    <form method="get" action="{{ path('app_cours_generer') }}" class="mb-4">
-        <div style="display: flex; gap: 10px;">
-            <input type="text" name="sujet" placeholder="Entrez un sujet (ex: HTML, POO...)" required>
-            <button type="submit" class="btn btn-primary">Générer un cours avec Mistral</button>
-        </div>
-    </form>
-
     {# Tableau des cours existants #}
     <table class="table">
         <thead>
