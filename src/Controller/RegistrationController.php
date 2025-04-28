@@ -29,8 +29,8 @@ class RegistrationController extends AbstractController
             $user->setPassword($userPasswordHasher->hashPassword($user, $plainPassword));
             $user->setCreatedAt(new \DateTimeImmutable('now'));
             $user->setNbToken(0);
-            $user->setHasTestPremium(1);
-            // $user->setNom('test');
+
+            $user->setRoles(['ROLE_PAID']);
 
             $entityManager->persist($user);
             $entityManager->flush();
