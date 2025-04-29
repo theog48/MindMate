@@ -140,9 +140,7 @@ final class CoursController extends AbstractController
                 $reponseStr = $json['choices'][0]['message']['content'];
                 $reponseStr = preg_replace('/```json\s*|\s*```/', '', $reponseStr);
                 $reponseJson = json_decode($reponseStr, true);
-                echo "<pre>";
-                var_dump($json['usage']['total_tokens']);
-                echo "</pre>";
+                
                 $newTokens = $json['usage']['total_tokens'];
     
                 if (!isset($reponseJson['cours'])) {
