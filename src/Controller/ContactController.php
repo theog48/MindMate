@@ -21,7 +21,7 @@ class ContactController extends AbstractController
 
             $email = (new Email())
                 ->from($formData['email']) // L'email que la personne a entré
-                ->to('support.mindmate@protonmail.com')
+                ->to('contact.mindmate@yopmail.com')
                 ->subject('Message de contact : ' . $formData['nom'])
                 ->text($formData['message'])
                 ->html('<p>' . nl2br(htmlspecialchars($formData['message'])) . '</p>');
