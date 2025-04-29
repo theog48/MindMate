@@ -1,7 +1,11 @@
 {% extends 'base.html.twig' %}
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 {% block title %}Quizz -
+=======
+{% block title %}
+>>>>>>> Stashed changes
 =======
 {% block title %}
 >>>>>>> Stashed changes
@@ -9,6 +13,7 @@
 {% endblock %}
 
 {% block body %}
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 	<h1>{{ quizz.titre }}</h1>
 
@@ -125,6 +130,26 @@ return true;
 				</div>
 			</div>
 
+=======
+	<div class="quiz-container">
+		<h1>{{ quizz.titre }}</h1>
+
+		<form action="{{ path('app_quizz_submit_response', {'id': quizz.id}) }}" method="POST" class="quiz-form">
+			<div class="question-container">
+				<label for="userreponse1">{{ quizz.question1 }}</label><br>
+				<div class="answer-options">
+					<input type="radio" id="userreponse1" name="userreponse1" value="{{ quizz.reponse11 }}">
+					<label for="userreponse1">{{ quizz.reponse11 }}</label><br>
+
+					<input type="radio" id="userreponse2" name="userreponse1" value="{{ quizz.reponse12 }}">
+					<label for="userreponse2">{{ quizz.reponse12 }}</label><br>
+
+					<input type="radio" id="userreponse3" name="userreponse1" value="{{ quizz.reponse13 }}">
+					<label for="userreponse3">{{ quizz.reponse13 }}</label><br>
+				</div>
+			</div>
+
+>>>>>>> Stashed changes
 			<div class="question-container">
 				<label for="userreponse2">{{ quizz.question2 }}</label><br>
 				<div class="answer-options">
@@ -186,5 +211,8 @@ return true;
 			</div>
 		</form>
 	</div>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 {% endblock %}

@@ -65,6 +65,7 @@ final class QuizzController extends AbstractController
     {
         $score = $request->query->getInt('score');
 
+<<<<<<< Updated upstream
         // Récupération des questions et des réponses
         $questions = [
             ['question' => $quizz->getQuestion1(), 'reponse1' => $quizz->getReponse11(), 'reponse2' => $quizz->getReponse12(), 'reponse3' => $quizz->getReponse13(), 'bonneReponse' => $quizz->getBonnereponse1(), 'userReponse' => $quizz->getUserreponse1()],
@@ -74,6 +75,8 @@ final class QuizzController extends AbstractController
             ['question' => $quizz->getQuestion5(), 'reponse1' => $quizz->getReponse51(), 'reponse2' => $quizz->getReponse52(), 'reponse3' => $quizz->getReponse53(), 'bonneReponse' => $quizz->getBonneReponse5(), 'userReponse' => $quizz->getReponseUser5()],
         ];
 
+=======
+>>>>>>> Stashed changes
     #[Route('/{id}/submit', name: 'app_quizz_submit_response', methods: ['POST'])]
     public function submitResponse(Request $request, Quizz $quizz, EntityManagerInterface $em): Response
     {
