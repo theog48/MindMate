@@ -15,11 +15,7 @@ use Symfony\Bundle\SecurityBundle\Security;
 
 class SecurityController extends AbstractController
 {
-    public function __construct(
-        private TokenStorageInterface $tokenStorage,
-        private RequestStack $requestStack
-    ) {}
-
+    
     #[Route(path: '/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils, Security $security, EntityManagerInterface $entityManager): Response
     {
@@ -48,9 +44,8 @@ class SecurityController extends AbstractController
                     $entityManager->flush();
 
                     // Rafraîchir le token pour appliquer les nouveaux rôles immédiatement
-                    $token = new UsernamePasswordToken($user, 'main', $roles);
-                    $this->tokenStorage->setToken($token);
-                    $this->requestStack->getSession()->set('_security_main', serialize($token));
+                    $security->login($user, 'form_login', 'main');
+
                 }
             }
         }
