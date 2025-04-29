@@ -1,15 +1,25 @@
 <?php
+
 namespace App\Controller;
 
+use App\Entity\User;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Bundle\SecurityBundle\Security;
-use Doctrine\ORM\EntityManagerInterface;
 
 class SecurityController extends AbstractController
 {
+    public function __construct(
+        private TokenStorageInterface $tokenStorage,
+        private RequestStack $requestStack
+    ) {}
+
     #[Route(path: '/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils, Security $security, EntityManagerInterface $entityManager): Response
     {
@@ -21,21 +31,26 @@ class SecurityController extends AbstractController
 
         if ($user) {
             // Vérifie si la date de fin du premium est dépassée
-            if ($user->HasTestPremium() && $user->getDateFinPremium() instanceof \DateTimeInterface) {
-                // Si la date de fin du premium est dépassée, désactive le premium
+            if ($user->hasTestPremium() && $user->getDateFinPremium() instanceof \DateTimeInterface) {
                 if ($user->getDateFinPremium() <= new \DateTimeImmutable()) {
-                    $user->setHasTestPremium(false);  // Utiliser setHasTestPremium pour modifier l'attribut
+                    $user->setHasTestPremium(false);
 
-                    // Met à jour la base de données avec la nouvelle valeur pour hasTestPremium
+                    // Met à jour les rôles
+                    $roles = array_values(array_diff($user->getRoles(), ['ROLE_PAID']));
+
+                    if (!in_array('ROLE_USER', $roles)) {
+                        $roles[] = 'ROLE_USER';
+                    }
+
+                    $user->setRoles(array_values($roles));
+
                     $entityManager->persist($user);
                     $entityManager->flush();
-                }
 
-                // Assurer que l'utilisateur a le rôle 'ROLE_USER' après expiration du test premium
-                if (!in_array('ROLE_USER', $user->getRoles())) {
-                    $user->setRoles(array_merge($user->getRoles(), ['ROLE_USER']));
-                    $entityManager->persist($user);
-                    $entityManager->flush();
+                    // Rafraîchir le token pour appliquer les nouveaux rôles immédiatement
+                    $token = new UsernamePasswordToken($user, 'main', $roles);
+                    $this->tokenStorage->setToken($token);
+                    $this->requestStack->getSession()->set('_security_main', serialize($token));
                 }
             }
         }

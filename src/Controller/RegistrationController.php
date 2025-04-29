@@ -30,7 +30,8 @@ class RegistrationController extends AbstractController
             $user->setCreatedAt(new \DateTimeImmutable('now'));
             $user->setNbToken(0);
 
-            $user->setRoles(['ROLE_PAID']);
+            $user->setRoles(['ROLE_USER', 'ROLE_PAID']);
+
 
             $entityManager->persist($user);
             $entityManager->flush();
