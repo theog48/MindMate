@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Cours;
 use App\Entity\Quizz;
+use App\Entity\User;
 use App\Form\CoursType;
 use App\Repository\CoursRepository;
 use App\Service\CoursService;
@@ -128,17 +129,21 @@ final class CoursController extends AbstractController
                 } catch (\Exception $e) {
                     dd("Error: " . $e->getMessage());
                 }
-    
+                
                 $jsonString = $response->getContent();
                 $json = json_decode($jsonString, true);
-    
+                
                 if (!isset($json['choices'][0]['message']['content'])) {
                     dd("Erreur : Réponse inattendue de l'API", $json);
                 }
-    
+                
                 $reponseStr = $json['choices'][0]['message']['content'];
                 $reponseStr = preg_replace('/```json\s*|\s*```/', '', $reponseStr);
                 $reponseJson = json_decode($reponseStr, true);
+                echo "<pre>";
+                var_dump($json['usage']['total_tokens']);
+                echo "</pre>";
+                $newTokens = $json['usage']['total_tokens'];
     
                 if (!isset($reponseJson['cours'])) {
                     dd("Erreur : La clé 'cours' est absente du JSON", $reponseJson);
@@ -179,6 +184,10 @@ final class CoursController extends AbstractController
                 $quizz->setCours($cour);
     
                 $user = $this->getUser();
+                if($user instanceof User) {
+                    $user->setNbToken($user->getNbToken() - $newTokens);
+                } 
+                
                 $quizz->setUser($user);
                 $cour->setUser($user);
                 $entityManager->persist($quizz);
