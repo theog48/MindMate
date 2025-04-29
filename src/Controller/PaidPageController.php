@@ -24,6 +24,7 @@ final class PaidPageController extends AbstractController
             if($user instanceof User){
                 if($user->getDateFinPremium() == null || $user->getDateFinPremium() < new \DateTime()){
                     $newDateFin = new \DateTime();
+                    $user->setRoles(['ROLE_PAID']);
                 }else{
                     $newDateFin = new \DateTime($user->getDateFinPremium()->format('Y-m-d'));
                 }
