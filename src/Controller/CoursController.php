@@ -217,9 +217,8 @@ final class CoursController extends AbstractController
 
         $cours = new Cours();
         $cours->setTitre($donnees['cours']['titre'] ?? $sujet);
-        $cours->setContenu(json_encode($donnees, JSON_PRETTY_PRINT));
+        $cours->setContenu(json_encode($donnees, JSON_PRETTY_PRINT)); // ou extraire un champ précis
         $cours->setCreatedAt(new \DateTime());
-        $cours->setUser($this->getUser()); // Lier l'utilisateur connecté
 
         $em->persist($cours);
         $em->flush();
