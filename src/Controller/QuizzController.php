@@ -60,13 +60,8 @@ final class QuizzController extends AbstractController
         ]);
     }
 
-<<<<<<< Updated upstream
-    #[Route('/{id}/results', name: 'app_quizz_results', methods: ['GET'])]
-    public function results(Request $request, Quizz $quizz): Response
-=======
     #[Route('/{id}/delete', name: 'app_quizz_delete', methods: ['POST'])]
     public function delete(Request $request, Quizz $quizz, EntityManagerInterface $entityManager): Response
->>>>>>> Stashed changes
     {
         $score = $request->query->getInt('score');
 
@@ -79,12 +74,6 @@ final class QuizzController extends AbstractController
             ['question' => $quizz->getQuestion5(), 'reponse1' => $quizz->getReponse51(), 'reponse2' => $quizz->getReponse52(), 'reponse3' => $quizz->getReponse53(), 'bonneReponse' => $quizz->getBonneReponse5(), 'userReponse' => $quizz->getReponseUser5()],
         ];
 
-<<<<<<< Updated upstream
-        return $this->render('results.html.twig', [
-            'quizz' => $quizz,
-            'score' => $score,
-            'questions' => $questions,
-=======
     #[Route('/{id}/submit', name: 'app_quizz_submit_response', methods: ['POST'])]
     public function submitResponse(Request $request, Quizz $quizz, EntityManagerInterface $em): Response
     {
@@ -119,7 +108,6 @@ final class QuizzController extends AbstractController
     {
         return $this->render('quizz/results.html.twig', [
             'quizz' => $quizz,
->>>>>>> Stashed changes
         ]);
     }
 }
