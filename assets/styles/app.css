@@ -3,6 +3,7 @@ body {
     font-family: 'Lato', sans-serif;
 }
 
+
 #navbar {
     background-color: #030E1F;
     padding: 0 20px;
@@ -69,17 +70,34 @@ body {
     font-weight: bold;
 }
 
+#user-name {
+    color: #D9D9D9;
+    margin-left: 10px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#logout-button {
+    color: #030E1F;
+    padding: 5px 10px;
+    border-radius: 8px;
+    background-color: #D9D9D9;
+    font-weight: bold;
+
+    text-decoration: none;
+}
+
 
 .footer-container {
     background-color: #030E1F;
     padding: 20px;
     max-width: 1075px;
     color: white;
-    margin: 20px auto;
+    margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: bottom;
     border-radius: 8px 8px 0 0;
     font-family: 'Bungee';
 }
@@ -761,4 +779,73 @@ h1 {
 /* ✅ Active State */
 .create-button:active {
     background-color: #1e7e34;
+}
+
+.mindmate-form {
+    background-color: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.mindmate-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #222;
+    text-transform: uppercase;
+}
+
+.mindmate-description {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.mindmate-field {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+}
+
+.mindmate-input-title {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+    border: solid #030E1F;
+}
+
+.mindmate-textarea-content {
+    width: 100%;
+    height: 300px;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    resize: vertical;
+    box-sizing: border-box;
+    border: solid #030E1F;
+    border-width: 3px 3px 9px 3px;
+}
+
+.mindmate-submit-button {
+    background-color: #000;
+    color: #fff;
+    font-weight: bold;
+    padding: 14px 40px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.mindmate-submit-button:hover {
+    background-color: #333;
 }
