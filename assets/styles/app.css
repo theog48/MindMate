@@ -335,7 +335,7 @@ h1{
 
 #mind {
     font-family: 'Bungee';
-	fon-style: bold;
+	font-style: bold;
 
 }
 
@@ -741,7 +741,7 @@ h1 {
     font-size: 16px;
     font-weight: bold;
     color: white;
-    background-color: #28a745; /* Green shade */
+    background-color: #28a745;
     padding: 12px 24px;
     border-radius: 6px;
     transition:0.3s ease, transform 0.2s ease;
@@ -749,7 +749,7 @@ h1 {
 
 /* 🚀 Hover Effect */
 .create-button:hover {
-    background-color: #218838; /* Slightly darker green */
+    background-color: #218838;
     transform: scale(1.05);
 }
 
@@ -757,6 +757,8 @@ h1 {
 .create-button:active {
     background-color: #1e7e34;
 }
+
+
 
 
 
