@@ -48,13 +48,15 @@ body {
     font-family: 'Bungee';
     font-size: 25px;
     font-weight: bold;
-
 }
 
+<<<<<<< Updated upstream
 /* #links a:hover {
     color: #D9D9D9;
 } */
 
+=======
+>>>>>>> Stashed changes
 #register-button {
     background-color: #D9D9D9;
     padding: 5px 10px;
@@ -63,12 +65,14 @@ body {
     font-weight: bold;
 }
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 #login-button {
     color: #D9D9D9;
     font-weight: bold;
 }
-
 
 .footer-container {
     background-color: #030E1F;
@@ -83,7 +87,6 @@ body {
     border-radius: 8px 8px 0 0;
     font-family: 'Bungee';
 }
-
 
 #footer-content {
     display: flex;
@@ -127,7 +130,6 @@ body {
     height: 45px;
     transition: transform 0.3s ease;
 }
-
 
 #social-icons a:hover img {
     transform: scale(1.1);
@@ -208,9 +210,12 @@ body {
     transform: rotate(180deg);
 }
 
+<<<<<<< Updated upstream
 
 /* les avis */
 
+=======
+>>>>>>> Stashed changes
 h1 {
     text-align: center;
     font-size: 40px;
@@ -220,7 +225,6 @@ h1 {
     font-style: bold;
     margin-bottom: 30px;
 }
-
 
 .comment-content {
     font-family: 'Lato', sans-serif;
@@ -234,6 +238,7 @@ h1 {
     margin-top: 20px;
     color: white;
     text-align: center;
+<<<<<<< Updated upstream
     font-family: 'Lato', sans-serif;
 }
 
@@ -257,6 +262,8 @@ h1 {
 .commentaires-container .card:nth-child(3),
 .commentaires-container .card:nth-child(4) {
     background-color: #629584;
+=======
+>>>>>>> Stashed changes
 }
 
 .card {
@@ -276,15 +283,12 @@ h1 {
     background-color: #eaeaea;
 }
 
-
 .card h3 {
     margin-bottom: 10px;
     text-align: left;
     font-size: 25px;
     font-family: 'Bungee';
     font-style: bold;
-
-
 }
 
 .card-actions a {
@@ -311,8 +315,6 @@ h1 {
     cursor: pointer;
 }
 
-
-
 @media (max-width: 768px) {
     .card {
         width: 45%;
@@ -325,7 +327,6 @@ h1 {
     }
 }
 
-
 .hero-block {
     margin: 40px auto;
     max-width: 1100px;
@@ -335,8 +336,12 @@ h1 {
 
 #mind {
     font-family: 'Bungee';
+<<<<<<< Updated upstream
 	font-style: bold;
 
+=======
+    font-style: bold;
+>>>>>>> Stashed changes
 }
 
 p {
@@ -349,7 +354,6 @@ p {
     color: white;
 }
 
-/* 🎓 Hero 1 – Academic Look */
 .hero-academic {
     padding: 20px;
     color: white;
@@ -375,7 +379,6 @@ p {
     width: 100%;
 }
 
-
 .hero-academic h1 {
     font-family: 'Bungee';
     font-style: bold;
@@ -396,7 +399,10 @@ p {
 .hero-academic .highlight {
     color: #387478;
     font-style: bold;
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 }
 
 .hero-academic img {
@@ -405,9 +411,6 @@ p {
     margin-right: 20px;
 }
 
-
-
-/* 🚀 Hero 2 – Engaging Look */
 .hero-engaging {
     background-color: #387478;
     padding: 20px;
@@ -417,6 +420,7 @@ p {
     border-width: 3px 3px 9px 3px;
     max-width: 900px;
     margin: 0 auto;
+<<<<<<< Updated upstream
 }
 
 
@@ -426,6 +430,8 @@ p {
     gap: 20px;
     align-items: center;
     justify-content: center;
+=======
+>>>>>>> Stashed changes
 }
 
 .hero-engaging img {
@@ -436,6 +442,7 @@ p {
 .hero-engaging .text {
     flex: 1;
     min-width: 280px;
+<<<<<<< Updated upstream
 
 }
 
@@ -446,6 +453,8 @@ p {
     margin-top: 20px;
     line-height: 1.5em;
     margin-bottom: 20px;
+=======
+>>>>>>> Stashed changes
 }
 
 .hero-engaging .title {
@@ -471,6 +480,7 @@ p {
     height: auto;
 }
 
+<<<<<<< Updated upstream
 
 
 
@@ -762,3 +772,8 @@ h1 {
 .create-button:active {
     background-color: #1e7e34;
 }
+=======
+#inscription:hover {
+    background-color: #90D9C0;
+}
+>>>>>>> Stashed changes

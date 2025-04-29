@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 {% extends 'base.html.twig' %}
 
 {% block title %}Résultat -
@@ -37,4 +38,39 @@
 	</div>
 
 	<a class="retour-lien" href="{{ path('app_quizz_index') }}">↩️ Retour aux quiz</a>
+=======
+{# quizz/results.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Résultats du Quiz
+{% endblock %}
+
+{% block body %}
+	<h1>Résultats de votre quiz</h1>
+
+	<div class="result">
+		<h2>{{ quizz.name }}</h2>
+
+		<p>
+			<strong>Score obtenu :
+			</strong>
+			{{ quizz.score }}
+			/ 5</p>
+
+		{# Si le score le plus élevé est présent, on l'affiche #}
+		{% if quizz.bestScore is not null %}
+			<p>
+				<strong>Meilleur Score :
+				</strong>
+				{{ quizz.bestScore }}
+				(le
+				{{ quizz.bestScoreDate|date('d/m/Y') }})</p>
+		{% else %}
+			<p>Aucun meilleur score enregistré.</p>
+		{% endif %}
+
+		<a href="{{ path('app_quizz_index') }}">Retour à la liste des quiz</a>
+	</div>
+>>>>>>> Stashed changes
 {% endblock %}
