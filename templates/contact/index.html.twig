@@ -1,0 +1,12 @@
+<h1>Contacte-nous bébé !</h1>
+
+{% for message in app.flashes('success') %}
+    <div class="flash-success">{{ message }}</div>
+{% endfor %}
+
+{{ form_start(formulaire_contact) }}
+    {{ form_row(formulaire_contact.nom) }}
+    {{ form_row(formulaire_contact.email) }}
+    {{ form_row(formulaire_contact.message) }}
+    {{ form_row(formulaire_contact.envoyer) }}
+{{ form_end(formulaire_contact) }}
