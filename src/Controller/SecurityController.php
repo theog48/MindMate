@@ -21,29 +21,30 @@ class SecurityController extends AbstractController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        $user = $this->getUser();
-        $hasChanged = false;
+        // $user = $this->getUser();
+        // $hasChanged = false;
 
-        if($user instanceof \App\Entity\User){
-            if($user->getDateFinPremium() instanceof DateTimeInterface){
-                if($user->getDateFinPremium() < new \DateTime()){
+        // if($user instanceof \App\Entity\User){
+        //     if($user->getDateFinPremium() instanceof DateTimeInterface){
+        //         if($user->getDateFinPremium() < new \DateTime()){
                     
-                    $user->setHasTestPremium(false);
-                    $user->setDateFinPremium(null);
-                    $roles =$user->getRoles();
-                    $roles = array_filter($roles, function ($role) {
-                        return $role !== 'ROLE_PAID';
-                    });
-                    $user->setRoles($roles);
-                    $hasChanged = true;
-                }
-            }
+        //             $user->setHasTestPremium(false);
+        //             $user->setDateFinPremium(null);
+        //             $roles =$user->getRoles();
+        //             dd($roles);
+        //             $roles = array_filter($roles, function ($role) {
+        //                 return $role !== 'ROLE_PAID';
+        //             });
+        //             $user->setRoles($roles);
+        //             $hasChanged = true;
+        //         }
+        //     }
 
-            if($hasChanged){
-                $entityManager->persist($user);
-                $entityManager->flush();
-            }
-        }
+        //     if($hasChanged){
+        //         $entityManager->persist($user);
+        //         $entityManager->flush();
+        //     }
+        // }
 
         return $this->render('security/login.html.twig', [
             'last_username' => $lastUsername,
