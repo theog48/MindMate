@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Quizz;
 use App\Form\QuizzType;
 use App\Repository\QuizzRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -50,36 +49,34 @@ final class QuizzController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_quizz_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Quizz $quizz, EntityManagerInterface $entityManager): Response
+    #[Route('/{id}/submit', name: 'app_quizz_submit_response', methods: ['POST'])]
+    public function submitResponse(Request $request, Quizz $quizz): Response
     {
-        $form = $this->createForm(QuizzType::class, $quizz);
-        $form->handleRequest($request);
+        $score = $request->request->getInt('score');
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
-
-            return $this->redirectToRoute('app_quizz_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->render('quizz/edit.html.twig', [
-            'quizz' => $quizz,
-            'form' => $form,
+        return $this->redirectToRoute('app_quizz_results', [
+            'id' => $quizz->getId(),
+            'score' => $score,
         ]);
     }
 
-    #[Route('/{id}', name: 'app_quizz_delete', methods: ['POST'])]
+    #[Route('/{id}/delete', name: 'app_quizz_delete', methods: ['POST'])]
     public function delete(Request $request, Quizz $quizz, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $quizz->getId(), $request->getPayload()->getString('_token'))) {
-            $entityManager->remove($quizz);
-            $entityManager->flush();
-        }
+        $score = $request->query->getInt('score');
 
-        return $this->redirectToRoute('app_quizz_index', [], Response::HTTP_SEE_OTHER);
-    }
+<<<<<<< Updated upstream
+        // Récupération des questions et des réponses
+        $questions = [
+            ['question' => $quizz->getQuestion1(), 'reponse1' => $quizz->getReponse11(), 'reponse2' => $quizz->getReponse12(), 'reponse3' => $quizz->getReponse13(), 'bonneReponse' => $quizz->getBonnereponse1(), 'userReponse' => $quizz->getUserreponse1()],
+            ['question' => $quizz->getQuestion2(), 'reponse1' => $quizz->getReponse21(), 'reponse2' => $quizz->getReponse22(), 'reponse3' => $quizz->getReponse23(), 'bonneReponse' => $quizz->getBonneReponse2(), 'userReponse' => $quizz->getReponseUser2()],
+            ['question' => $quizz->getQuestion3(), 'reponse1' => $quizz->getReponse31(), 'reponse2' => $quizz->getReponse32(), 'reponse3' => $quizz->getReponse33(), 'bonneReponse' => $quizz->getBonneReponse3(), 'userReponse' => $quizz->getReponseUser3()],
+            ['question' => $quizz->getQuestion4(), 'reponse1' => $quizz->getReponse41(), 'reponse2' => $quizz->getReponse42(), 'reponse3' => $quizz->getReponse43(), 'bonneReponse' => $quizz->getBonneReponse4(), 'userReponse' => $quizz->getReponseUser4()],
+            ['question' => $quizz->getQuestion5(), 'reponse1' => $quizz->getReponse51(), 'reponse2' => $quizz->getReponse52(), 'reponse3' => $quizz->getReponse53(), 'bonneReponse' => $quizz->getBonneReponse5(), 'userReponse' => $quizz->getReponseUser5()],
+        ];
 
-
+=======
+>>>>>>> Stashed changes
     #[Route('/{id}/submit', name: 'app_quizz_submit_response', methods: ['POST'])]
     public function submitResponse(Request $request, Quizz $quizz, EntityManagerInterface $em): Response
     {
@@ -93,7 +90,6 @@ final class QuizzController extends AbstractController
         if ($data->get('reponseUser4') === $quizz->getBonneReponse4()) $score++;
         if ($data->get('reponseUser5') === $quizz->getBonneReponse5()) $score++;
 
-        // Facultatif : enregistrer les réponses de l’utilisateur
         $quizz->setUserreponse1($data->get('userreponse1'));
         $quizz->setReponseUser2($data->get('reponseUser2'));
         $quizz->setReponseUser3($data->get('reponseUser3'));
@@ -104,7 +100,17 @@ final class QuizzController extends AbstractController
 
         $em->flush();
 
-        // Redirection vers la page de détails du quizz avec le score mis à jour
-        return $this->redirectToRoute('app_quizz_show', ['id' => $quizz->getId()]);
+        // REDIRECT vers page de résultats
+        return $this->redirectToRoute('app_quizz_results', [
+            'id' => $quizz->getId(),
+        ]);
+    }
+
+    #[Route('/{id}/results', name: 'app_quizz_results', methods: ['GET'])]
+    public function results(Quizz $quizz): Response
+    {
+        return $this->render('quizz/results.html.twig', [
+            'quizz' => $quizz,
+        ]);
     }
 }

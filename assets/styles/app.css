@@ -49,7 +49,6 @@ body {
     font-family: 'Bungee';
     font-size: 25px;
     font-weight: bold;
-
 }
 
 /* #links a:hover {
@@ -63,7 +62,6 @@ body {
     color: #030E1F;
     font-weight: bold;
 }
-
 
 #login-button {
     color: #D9D9D9;
@@ -101,7 +99,6 @@ body {
     border-radius: 8px 8px 0 0;
     font-family: 'Bungee';
 }
-
 
 #footer-content {
     display: flex;
@@ -145,7 +142,6 @@ body {
     height: 45px;
     transition: transform 0.3s ease;
 }
-
 
 #social-icons a:hover img {
     transform: scale(1.1);
@@ -239,7 +235,6 @@ h1 {
     margin-bottom: 30px;
 }
 
-
 .comment-content {
     font-family: 'Lato', sans-serif;
 }
@@ -294,15 +289,12 @@ h1 {
     background-color: #eaeaea;
 }
 
-
 .card h3 {
     margin-bottom: 10px;
     text-align: left;
     font-size: 25px;
     font-family: 'Bungee';
     font-style: bold;
-
-
 }
 
 .card-actions a {
@@ -329,8 +321,6 @@ h1 {
     cursor: pointer;
 }
 
-
-
 @media (max-width: 768px) {
     .card {
         width: 45%;
@@ -343,7 +333,6 @@ h1 {
     }
 }
 
-
 .hero-block {
     margin: 40px auto;
     max-width: 1100px;
@@ -353,8 +342,7 @@ h1 {
 
 #mind {
     font-family: 'Bungee';
-	font-style: bold;
-
+    font-style: bold;
 }
 
 p {
@@ -367,7 +355,6 @@ p {
     color: white;
 }
 
-/* 🎓 Hero 1 – Academic Look */
 .hero-academic {
     padding: 20px;
     color: white;
@@ -393,7 +380,6 @@ p {
     width: 100%;
 }
 
-
 .hero-academic h1 {
     font-family: 'Bungee';
     font-style: bold;
@@ -414,7 +400,6 @@ p {
 .hero-academic .highlight {
     color: #387478;
     font-style: bold;
-
 }
 
 .hero-academic img {
@@ -423,9 +408,6 @@ p {
     margin-right: 20px;
 }
 
-
-
-/* 🚀 Hero 2 – Engaging Look */
 .hero-engaging {
     background-color: #387478;
     padding: 20px;
@@ -848,4 +830,8 @@ h1 {
 
 .mindmate-submit-button:hover {
     background-color: #333;
+}
+
+#inscription:hover {
+    background-color: #90D9C0;
 }
