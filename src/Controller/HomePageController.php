@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class HomePageController extends AbstractController
 {
-    #[Route('/home/page', name: 'app_home_page')]
+    #[Route('/', name: 'app_home_page')]
     public function index(CommentaireRepository $commentaireRepository): Response
     {
         // Store the result in a variable

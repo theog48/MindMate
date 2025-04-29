@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Résultat -
+	{{ quizz.titre }}
+{% endblock %}
+
+{% block body %}
+	<h1>Résultats du quiz :
+		{{ quizz.titre }}</h1>
+
+	<p>Votre score :
+		<strong>{{ score }}/5</strong>
+	</p>
+
+	<div class="correction">
+		{% for question in questions %}
+			<div class="question-block">
+				<h2>{{ loop.index }}.
+					{{ question.intitule }}</h2>
+
+				{% set userAnswer = userAnswers[question.id] ?? 'Aucune réponse' %}
+				{% set correctAnswer = question.reponseCorrecte %}
+
+				{% if userAnswer == correctAnswer %}
+					<p class="good-answer">✅ Bonne réponse !</p>
+				{% else %}
+					<p class="wrong-answer">❌ Mauvaise réponse</p>
+					<p class="info-correction">Votre réponse :
+						<strong>{{ userAnswer }}</strong>
+					</p>
+					<p class="info-correction">Bonne réponse :
+						<strong>{{ correctAnswer }}</strong>
+					</p>
+				{% endif %}
+			</div>
+		{% endfor %}
+	</div>
+
+	<a class="retour-lien" href="{{ path('app_quizz_index') }}">↩️ Retour aux quiz</a>
+{% endblock %}
