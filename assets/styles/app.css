@@ -235,6 +235,19 @@ h1 {
     margin-bottom: 30px;
 }
 
+h2{
+    font-family: 'Bungee';
+}
+
+h3{
+    font-family: 'Bungee';
+}
+h4{
+    font-family: 'Bungee';
+}
+.titre{
+    color: black;
+}
 .comment-content {
     font-family: 'Lato', sans-serif;
 }
@@ -294,7 +307,6 @@ h1 {
     text-align: left;
     font-size: 25px;
     font-family: 'Bungee';
-    font-style: bold;
 }
 
 .card-actions a {
@@ -369,6 +381,7 @@ p {
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
+    background-color: #243642;
 }
 
 .hero-academic .hero-text {
@@ -398,7 +411,7 @@ p {
 }
 
 .hero-academic .highlight {
-    color: #387478;
+    color: #629584;
     font-style: bold;
 }
 
@@ -834,4 +847,24 @@ h1 {
 
 #inscription:hover {
     background-color: #90D9C0;
+}
+#inscription {
+    display: inline-block;
+    margin: 20px auto;
+    text-align: center;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* vert sympa */
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+#inscription:hover {
+    background-color: #45a049;
+}
+
+.hero-content .text {
+    text-align: center; /* pour centrer le contenu textuellement */
 }
