@@ -27,9 +27,9 @@
 			</p>
 
 			{% if app.user %}
-				<a href="http://localhost:8000/profil" id="inscription">ACCÉDER À MON ESPACE</a>
+				<a href={{ path('app_profil')}} id="inscription">ACCÉDER À MON ESPACE</a>
 			{% else %}
-				<p id="inscription">INSCRIVEZ-VOUS MAINTENANT</p>
+				<p id="inscription"><a href={{ path('app_register')}}>INSCRIVEZ-VOUS MAINTENANT</a></p>
 			{% endif %}
 		</div>
 	</div>
