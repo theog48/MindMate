@@ -18,7 +18,7 @@ final class ProfilController extends AbstractController
     {
         // Get the logged-in user
         $user = $this->getUser();
-
+        $cours = [];
         // Get the courses related to the logged-in user
         if($user instanceof User){
             $cours = $user->getCours();
