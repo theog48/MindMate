@@ -651,7 +651,9 @@ button:hover {
 h1 {
     font-family: 'Arial Black', sans-serif;
     font-size: 24px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
+    font-family: 'Bungee';
+    margin-top: 40px;
 }
 
 
