@@ -209,6 +209,7 @@ body {
 .faq-answer p {
     margin: 0;
     padding: 0 1rem;
+    color: black;
 }
 
 .arrow {
@@ -231,10 +232,22 @@ h1 {
     margin-bottom: 0.5rem;
     color: #0c0c0c;
     font-family: 'Bungee';
-    font-style: bold;
     margin-bottom: 30px;
 }
 
+h2{
+    font-family: 'Bungee';
+}
+
+h3{
+    font-family: 'Bungee';
+}
+h4{
+    font-family: 'Bungee';
+}
+.titre{
+    color: black;
+}
 .comment-content {
     font-family: 'Lato', sans-serif;
 }
@@ -294,7 +307,6 @@ h1 {
     text-align: left;
     font-size: 25px;
     font-family: 'Bungee';
-    font-style: bold;
 }
 
 .card-actions a {
@@ -369,6 +381,7 @@ p {
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
+    background-color: #243642;
 }
 
 .hero-academic .hero-text {
@@ -398,7 +411,7 @@ p {
 }
 
 .hero-academic .highlight {
-    color: #387478;
+    color: #629584;
     font-style: bold;
 }
 

@@ -23,12 +23,15 @@
                 <span class="strong title">MINDMATE</span> simplifie l'apprentissage avec des résumés clairs 
                 et des quiz interactifs, adaptés aux étudiants, professionnels et curieux.
             </p>
-			<p id="inscription">INSCRIVEZ VOUS MAINTENANT</p>
+
+            {% if app.user %}
+                <a href="http://localhost:8000/profil" id="inscription">ACCÉDER À MON ESPACE</a>
+            {% else %}
+                <p id="inscription">INSCRIVEZ-VOUS MAINTENANT</p>
+            {% endif %}
         </div>
     </div>
 </section>
-
-
 
 
 
