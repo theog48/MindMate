@@ -47,7 +47,7 @@ final class CoursController extends AbstractController
                 $description = $cour->getContenu();
     
                 // Vérification de la longueur du contenu
-                if (empty($description) || strlen($description) < 10 || strlen($description) > 5000) {
+                if (strlen($description) > 5000 && $this->isGranted('ROLE_USER')) {
                     echo "<script>alert('Le contenu du cours doit contenir entre 10 et 5000 caractères.');</script>";
                     return $this->render('cours/new.html.twig', [
                         'form' => $form,
