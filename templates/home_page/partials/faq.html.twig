@@ -1,156 +1,157 @@
+<style>
+	body {
+		font-family: sans-serif;
+		background-color: #e5e5e5;
+		margin: 0;
+		padding: 40px;
+	}
 
-    <style>
-        body {
-            font-family: sans-serif;
-            background-color: #e5e5e5;
-            margin: 0;
-            padding: 40px;
-        }
+	.faq-section {
+		max-width: 800px;
+		margin: 0 auto;
+	}
 
-        .faq-section {
-            max-width: 800px;
-            margin: 0 auto;
-        }
+	.intro {
+		text-align: center;
+		margin-bottom: 30px;
+	}
 
-        .intro {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+	.intro h1 {
+		font-size: 2em;
+		margin-bottom: 10px;
+	}
 
-        .intro h1 {
-            font-size: 2em;
-            margin-bottom: 10px;
-        }
+	.intro .subtitle {
+		font-weight: bold;
+		font-size: 1.1em;
+	}
 
-        .intro .subtitle {
-            font-weight: bold;
-            font-size: 1.1em;
-        }
+	.faq-container {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+	}
 
-        .faq-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+	.faq-item {
+		background-color: #e0e0e0;
+		border-radius: 8px;
+		border: solid #030E1F;
+		border-width: 3px 3px 9px 3px;
+		overflow: hidden;
+	}
 
-        .faq-item {
-            background-color: #e0e0e0;
-            border-radius: 8px;
-            border: solid #030E1F;
-            border-width: 3px 3px 9px 3px;
-            overflow: hidden;
-        }
+	.faq-question {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 16px;
+		cursor: pointer;
+	}
 
-        .faq-question {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px;
-            cursor: pointer;
-        }
+	.faq-question h3 {
+		margin: 0;
+		font-size: 1em;
+		font-weight: bold;
+	}
 
-        .faq-question h3 {
-            margin: 0;
-            font-size: 1em;
-            font-weight: bold;
-        }
+	.faq-answer {
+		display: none;
+		padding: 16px;
+		background-color: white;
+		border-top: 1px solid #ccc;
+	}
 
-        .faq-answer {
-            display: none;
-            padding: 16px;
-            background-color: white;
-            border-top: 1px solid #ccc;
-        }
+	.faq-item.open .faq-answer {
+		display: block;
+	}
 
-        .faq-item.open .faq-answer {
-            display: block;
-        }
+	.arrow {
+		font-size: 1.5em;
+		transform: rotate(0deg);
+		transition: transform 0.2s;
+	}
 
-        .arrow {
-            font-size: 1.5em;
-            transform: rotate(0deg);
-            transition: transform 0.2s;
-        }
+	.faq-item.open .arrow {
+		transform: rotate(180deg);
+	}
+</style>
 
-        .faq-item.open .arrow {
-            transform: rotate(180deg);
-        }
-    </style>
+<section id="faq" class="faq-section">
+	<div class="intro">
+		<h1>FAQ MINDMATE</h1>
+		<p class="subtitle">
+			<strong>VOS QUESTIONS, NOS SOLUTIONS</strong>
+		</p>
+	</div>
 
-<section class="faq-section">
-    <div class="intro">
-        <h1>FAQ MINDMATE</h1>
-        <p class="subtitle"><strong>VOS QUESTIONS, NOS SOLUTIONS</strong></p>
-    </div>
+	<div class="faq-container">
+		<div class="faq-item">
+			<div class="faq-question">
+				<h3>Comment fonctionne MindMate pour résumer mes cours ?</h3>
+				<span class="arrow">↓</span>
+			</div>
+			<div class="faq-answer">
+				<p>Grâce à l'API Mistral, vous pouvez copier-coller le contenu d'un cours dans un champ texte. L'application génère automatiquement un résumé vulgarisé, clair et adapté, prêt à être utilisé.</p>
+			</div>
+		</div>
 
-    <div class="faq-container">
-        <div class="faq-item">
-            <div class="faq-question">
-                <h3>Comment fonctionne MindMate pour résumer mes cours ?</h3>
-                <span class="arrow">↓</span>
-            </div>
-            <div class="faq-answer">
-                <p>Grâce à l'API Mistral, vous pouvez copier-coller le contenu d'un cours dans un champ texte. L'application génère automatiquement un résumé vulgarisé, clair et adapté, prêt à être utilisé.</p>
-            </div>
-        </div>
+		<div class="faq-item">
+			<div class="faq-question">
+				<h3>Les quiz interactifs sont-ils personnalisés selon mon cours ?</h3>
+				<span class="arrow">↓</span>
+			</div>
+			<div class="faq-answer">
+				<p>Oui, nos quiz sont générés automatiquement en analysant le contenu de votre cours pour créer des questions pertinentes qui testent véritablement votre compréhension du sujet.</p>
+			</div>
+		</div>
 
-        <div class="faq-item">
-            <div class="faq-question">
-                <h3>Les quiz interactifs sont-ils personnalisés selon mon cours ?</h3>
-                <span class="arrow">↓</span>
-            </div>
-            <div class="faq-answer">
-                <p>Oui, nos quiz sont générés automatiquement en analysant le contenu de votre cours pour créer des questions pertinentes qui testent véritablement votre compréhension du sujet.</p>
-            </div>
-        </div>
+		<div class="faq-item">
+			<div class="faq-question">
+				<h3>MindMate est-elle accessible gratuitement ?</h3>
+				<span class="arrow">↓</span>
+			</div>
+			<div class="faq-answer">
+				<p>MindMate propose une version gratuite avec des fonctionnalités de base. Pour un accès illimité à toutes les fonctionnalités, une version premium est disponible.</p>
+			</div>
+		</div>
 
-        <div class="faq-item">
-            <div class="faq-question">
-                <h3>MindMate est-elle accessible gratuitement ?</h3>
-                <span class="arrow">↓</span>
-            </div>
-            <div class="faq-answer">
-                <p>MindMate propose une version gratuite avec des fonctionnalités de base. Pour un accès illimité à toutes les fonctionnalités, une version premium est disponible.</p>
-            </div>
-        </div>
+		<div class="faq-item">
+			<div class="faq-question">
+				<h3>Puis-je consulter mes statistiques d'apprentissage ?</h3>
+				<span class="arrow">↓</span>
+			</div>
+			<div class="faq-answer">
+				<p>Absolument! MindMate vous fournit des statistiques détaillées sur vos progrès, vos résultats aux quiz et votre rythme d'apprentissage.</p>
+			</div>
+		</div>
 
-        <div class="faq-item">
-            <div class="faq-question">
-                <h3>Puis-je consulter mes statistiques d'apprentissage ?</h3>
-                <span class="arrow">↓</span>
-            </div>
-            <div class="faq-answer">
-                <p>Absolument! MindMate vous fournit des statistiques détaillées sur vos progrès, vos résultats aux quiz et votre rythme d'apprentissage.</p>
-            </div>
-        </div>
+		<div class="faq-item">
+			<div class="faq-question">
+				<h3>Comment consulter mon historique de résultats et de cours ?</h3>
+				<span class="arrow">↓</span>
+			</div>
+			<div class="faq-answer">
+				<p>Tous vos cours et résultats sont sauvegardés dans votre espace personnel. Vous pouvez y accéder à tout moment via l'onglet "Historique".</p>
+			</div>
+		</div>
 
-        <div class="faq-item">
-            <div class="faq-question">
-                <h3>Comment consulter mon historique de résultats et de cours ?</h3>
-                <span class="arrow">↓</span>
-            </div>
-            <div class="faq-answer">
-                <p>Tous vos cours et résultats sont sauvegardés dans votre espace personnel. Vous pouvez y accéder à tout moment via l'onglet "Historique".</p>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">
-                <h3>Que faire si je rencontre un problème avec MindMate ?</h3>
-                <span class="arrow">↓</span>
-            </div>
-            <div class="faq-answer">
-                <p>Notre équipe support est disponible 7j/7. Vous pouvez nous contacter via le chat intégré ou par email à support@mindmate.com</p>
-            </div>
-        </div>
-    </div>
+		<div class="faq-item">
+			<div class="faq-question">
+				<h3>Que faire si je rencontre un problème avec MindMate ?</h3>
+				<span class="arrow">↓</span>
+			</div>
+			<div class="faq-answer">
+				<p>Notre équipe support est disponible 7j/7. Vous pouvez nous contacter via le chat intégré ou par email à support@mindmate.com</p>
+			</div>
+		</div>
+	</div>
 </section>
 
 <script>
-    document.querySelectorAll('.faq-question').forEach(question => {
-        question.addEventListener('click', () => {
-            const item = question.parentElement;
-            item.classList.toggle('open');
-        });
-    });
+	document.querySelectorAll('.faq-question').forEach(question => {
+question.addEventListener('click', () => {
+const item = question.parentElement;
+item.classList.toggle('open');
+});
+});
 </script>
