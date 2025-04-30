@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User index{% endblock %}
+{% block title %}ADMIN{% endblock %}
 
 {% block body %}
-    <h1>User index</h1>
+    <h1>ADMIN</h1>
 
     <table class="table">
         <thead>
@@ -17,7 +17,7 @@
                 <th>CreatedAt</th>
                 <th>HasTestPremium</th>
                 <th>DateFinPremium</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -32,18 +32,19 @@
                 <td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ user.hasTestPremium ? 'Yes' : 'No' }}</td>
                 <td>{{ user.dateFinPremium ? user.dateFinPremium|date('Y-m-d') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+                <td class="action-buttons">
+                    <a href="{{ path('app_user_show', {'id': user.id}) }}" class="btn btn-primary">Show</a>
+                    <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="btn btn-warning">Edit</a>
                 </td>
+
             </tr>
         {% else %}
             <tr>
-                <td colspan="10">no records found</td>
+                <td colspan="10">No records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_user_new') }}">Create new</a>
+<a href="{{ path('app_user_new') }}" class="create-button">Create new</a>
 {% endblock %}

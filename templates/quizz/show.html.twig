@@ -1,150 +1,206 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Quizz{% endblock %}
+
+{% block title %}Quizz -
+	{{ quizz.titre }}
+{% endblock %}
 
 {% block body %}
-    <h1>Quizz</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ quizz.id }}</td>
-            </tr>
-            <tr>
-                <th>Titre</th>
-                <td>{{ quizz.titre }}</td>
-            </tr>
-            <tr>
-                <th>Question1</th>
-                <td>{{ quizz.question1 }}</td>
-            </tr>
-            <tr>
-                <th>Reponse11</th>
-                <td>{{ quizz.reponse11 }}</td>
-            </tr>
-            <tr>
-                <th>Reponse12</th>
-                <td>{{ quizz.reponse12 }}</td>
-            </tr>
-            <tr>
-                <th>Reponse13</th>
-                <td>{{ quizz.reponse13 }}</td>
-            </tr>
-            <tr>
-                <th>Bonnereponse1</th>
-                <td>{{ quizz.bonnereponse1 }}</td>
-            </tr>
-            <tr>
-                <th>Userreponse1</th>
-                <td>{{ quizz.userreponse1 }}</td>
-            </tr>
-            <tr>
-                <th>Question2</th>
-                <td>{{ quizz.question2 }}</td>
-            </tr>
-            <tr>
-                <th>Reponse21</th>
-                <td>{{ quizz.reponse21 }}</td>
-            </tr>
-            <tr>
-                <th>Reponse22</th>
-                <td>{{ quizz.reponse22 }}</td>
-            </tr>
-            <tr>
-                <th>Reponse23</th>
-                <td>{{ quizz.reponse23 }}</td>
-            </tr>
-            <tr>
-                <th>BonneReponse2</th>
-                <td>{{ quizz.bonneReponse2 }}</td>
-            </tr>
-            <tr>
-                <th>ReponseUser2</th>
-                <td>{{ quizz.reponseUser2 }}</td>
-            </tr>
-            <tr>
-                <th>Question3</th>
-                <td>{{ quizz.question3 }}</td>
-            </tr>
-            <tr>
-                <th>Reponse31</th>
-                <td>{{ quizz.reponse31 }}</td>
-            </tr>
-            <tr>
-                <th>Reponse32</th>
-                <td>{{ quizz.reponse32 }}</td>
-            </tr>
-            <tr>
-                <th>Reponse33</th>
-                <td>{{ quizz.reponse33 }}</td>
-            </tr>
-            <tr>
-                <th>BonneReponse3</th>
-                <td>{{ quizz.bonneReponse3 }}</td>
-            </tr>
-            <tr>
-                <th>ReponseUser3</th>
-                <td>{{ quizz.reponseUser3 }}</td>
-            </tr>
-            <tr>
-                <th>Question4</th>
-                <td>{{ quizz.question4 }}</td>
-            </tr>
-            <tr>
-                <th>Reponse41</th>
-                <td>{{ quizz.reponse41 }}</td>
-            </tr>
-            <tr>
-                <th>Reponse42</th>
-                <td>{{ quizz.reponse42 }}</td>
-            </tr>
-            <tr>
-                <th>Reponse43</th>
-                <td>{{ quizz.reponse43 }}</td>
-            </tr>
-            <tr>
-                <th>BonneReponse4</th>
-                <td>{{ quizz.bonneReponse4 }}</td>
-            </tr>
-            <tr>
-                <th>ReponseUser4</th>
-                <td>{{ quizz.reponseUser4 }}</td>
-            </tr>
-            <tr>
-                <th>Question5</th>
-                <td>{{ quizz.question5 }}</td>
-            </tr>
-            <tr>
-                <th>Reponse51</th>
-                <td>{{ quizz.reponse51 }}</td>
-            </tr>
-            <tr>
-                <th>Reponse52</th>
-                <td>{{ quizz.reponse52 }}</td>
-            </tr>
-            <tr>
-                <th>Reponse53</th>
-                <td>{{ quizz.reponse53 }}</td>
-            </tr>
-            <tr>
-                <th>BonneReponse5</th>
-                <td>{{ quizz.bonneReponse5 }}</td>
-            </tr>
-            <tr>
-                <th>ReponseUser5</th>
-                <td>{{ quizz.reponseUser5 }}</td>
-            </tr>
-            <tr>
-                <th>Score</th>
-                <td>{{ quizz.score }}</td>
-            </tr>
-        </tbody>
-    </table>
+	<h1>{{ quizz.titre }}</h1>
 
-    <a href="{{ path('app_quizz_index') }}">back to list</a>
+	<form action="{{ path('app_quizz_submit_response', { id: quizz.id }) }}" method="post" onsubmit="return calculerScore();">
+		<div>
+			<p>
+				<strong>1.
+					{{ quizz.question1 }}</strong>
+			</p>
+			<input type="radio" name="q1" value="{{ quizz.reponse11 }}">
+			{{ quizz.reponse11 }}<br>
+			<input type="radio" name="q1" value="{{ quizz.reponse12 }}">
+			{{ quizz.reponse12 }}<br>
+			<input type="radio" name="q1" value="{{ quizz.reponse13 }}">
+			{{ quizz.reponse13 }}
+		</div>
 
-    <a href="{{ path('app_quizz_edit', {'id': quizz.id}) }}">edit</a>
+		<div>
+			<p>
+				<strong>2.
+					{{ quizz.question2 }}</strong>
+			</p>
+			<input type="radio" name="q2" value="{{ quizz.reponse21 }}">
+			{{ quizz.reponse21 }}<br>
+			<input type="radio" name="q2" value="{{ quizz.reponse22 }}">
+			{{ quizz.reponse22 }}<br>
+			<input type="radio" name="q2" value="{{ quizz.reponse23 }}">
+			{{ quizz.reponse23 }}
+		</div>
 
-    {{ include('quizz/_delete_form.html.twig') }}
+		<div>
+			<p>
+				<strong>3.
+					{{ quizz.question3 }}</strong>
+			</p>
+			<input type="radio" name="q3" value="{{ quizz.reponse31 }}">
+			{{ quizz.reponse31 }}<br>
+			<input type="radio" name="q3" value="{{ quizz.reponse32 }}">
+			{{ quizz.reponse32 }}<br>
+			<input type="radio" name="q3" value="{{ quizz.reponse33 }}">
+			{{ quizz.reponse33 }}
+		</div>
+
+		<div>
+			<p>
+				<strong>4.
+					{{ quizz.question4 }}</strong>
+			</p>
+			<input type="radio" name="q4" value="{{ quizz.reponse41 }}">
+			{{ quizz.reponse41 }}<br>
+			<input type="radio" name="q4" value="{{ quizz.reponse42 }}">
+			{{ quizz.reponse42 }}<br>
+			<input type="radio" name="q4" value="{{ quizz.reponse43 }}">
+			{{ quizz.reponse43 }}
+		</div>
+
+		<div>
+			<p>
+				<strong>5.
+					{{ quizz.question5 }}</strong>
+			</p>
+			<input type="radio" name="q5" value="{{ quizz.reponse51 }}">
+			{{ quizz.reponse51 }}<br>
+			<input type="radio" name="q5" value="{{ quizz.reponse52 }}">
+			{{ quizz.reponse52 }}<br>
+			<input type="radio" name="q5" value="{{ quizz.reponse53 }}">
+			{{ quizz.reponse53 }}
+		</div>
+
+		<input type="hidden" name="score" id="score" value="0">
+		<br>
+		<button type="submit">Voir mon score</button>
+	</form>
+
+	<script>
+		function calculerScore() {
+let score = 0;
+
+const bonnesReponses = [
+"{{ quizz.bonnereponse1|e('js') }}",
+"{{ quizz.bonneReponse2|e('js') }}",
+"{{ quizz.bonneReponse3|e('js') }}",
+"{{ quizz.bonneReponse4|e('js') }}",
+"{{ quizz.bonneReponse5|e('js') }}"
+];
+
+for (let i = 1; i <= 5; i++) {
+const checked = document.querySelector (`input[name="q${i}"]:checked`);
+if (checked && checked.value.trim().toLowerCase() === bonnesReponses[i - 1].trim().toLowerCase()) {
+score++;
+}
+}
+
+document.getElementById('score').value = score;
+return true;
+}
+	</script>
+
+	<div class="quiz-container">
+		<h1>{{ quizz.titre }}</h1>
+
+		<form action="{{ path('app_quizz_submit_response', {'id': quizz.id}) }}" method="POST" class="quiz-form">
+			<div class="question-container">
+				<label for="userreponse1">{{ quizz.question1 }}</label><br>
+				<div class="answer-options">
+					<input type="radio" id="userreponse1" name="userreponse1" value="{{ quizz.reponse11 }}">
+					<label for="userreponse1">{{ quizz.reponse11 }}</label><br>
+
+					<input type="radio" id="userreponse2" name="userreponse1" value="{{ quizz.reponse12 }}">
+					<label for="userreponse2">{{ quizz.reponse12 }}</label><br>
+
+					<input type="radio" id="userreponse3" name="userreponse1" value="{{ quizz.reponse13 }}">
+					<label for="userreponse3">{{ quizz.reponse13 }}</label><br>
+				</div>
+			</div>
+
+
+	<div class="quiz-container">
+		<h1>{{ quizz.titre }}</h1>
+
+		<form action="{{ path('app_quizz_submit_response', {'id': quizz.id}) }}" method="POST" class="quiz-form">
+			<div class="question-container">
+				<label for="userreponse1">{{ quizz.question1 }}</label><br>
+				<div class="answer-options">
+					<input type="radio" id="userreponse1" name="userreponse1" value="{{ quizz.reponse11 }}">
+					<label for="userreponse1">{{ quizz.reponse11 }}</label><br>
+
+					<input type="radio" id="userreponse2" name="userreponse1" value="{{ quizz.reponse12 }}">
+					<label for="userreponse2">{{ quizz.reponse12 }}</label><br>
+
+					<input type="radio" id="userreponse3" name="userreponse1" value="{{ quizz.reponse13 }}">
+					<label for="userreponse3">{{ quizz.reponse13 }}</label><br>
+				</div>
+			</div>
+
+
+			<div class="question-container">
+				<label for="userreponse2">{{ quizz.question2 }}</label><br>
+				<div class="answer-options">
+					<input type="radio" id="userreponse4" name="userreponse2" value="{{ quizz.reponse21 }}">
+					<label for="userreponse4">{{ quizz.reponse21 }}</label><br>
+
+					<input type="radio" id="userreponse5" name="userreponse2" value="{{ quizz.reponse22 }}">
+					<label for="userreponse5">{{ quizz.reponse22 }}</label><br>
+
+					<input type="radio" id="userreponse6" name="userreponse2" value="{{ quizz.reponse23 }}">
+					<label for="userreponse6">{{ quizz.reponse23 }}</label><br>
+				</div>
+			</div>
+
+			<div class="question-container">
+				<label for="userreponse3">{{ quizz.question3 }}</label><br>
+				<div class="answer-options">
+					<input type="radio" id="userreponse7" name="userreponse3" value="{{ quizz.reponse31 }}">
+					<label for="userreponse7">{{ quizz.reponse31 }}</label><br>
+
+					<input type="radio" id="userreponse8" name="userreponse3" value="{{ quizz.reponse32 }}">
+					<label for="userreponse8">{{ quizz.reponse32 }}</label><br>
+
+					<input type="radio" id="userreponse9" name="userreponse3" value="{{ quizz.reponse33 }}">
+					<label for="userreponse9">{{ quizz.reponse33 }}</label><br>
+				</div>
+			</div>
+
+			<div class="question-container">
+				<label for="userreponse4">{{ quizz.question4 }}</label><br>
+				<div class="answer-options">
+					<input type="radio" id="userreponse10" name="userreponse4" value="{{ quizz.reponse41 }}">
+					<label for="userreponse10">{{ quizz.reponse41 }}</label><br>
+
+					<input type="radio" id="userreponse11" name="userreponse4" value="{{ quizz.reponse42 }}">
+					<label for="userreponse11">{{ quizz.reponse42 }}</label><br>
+
+					<input type="radio" id="userreponse12" name="userreponse4" value="{{ quizz.reponse43 }}">
+					<label for="userreponse12">{{ quizz.reponse43 }}</label><br>
+				</div>
+			</div>
+
+			<div class="question-container">
+				<label for="userreponse5">{{ quizz.question5 }}</label><br>
+				<div class="answer-options">
+					<input type="radio" id="userreponse13" name="userreponse5" value="{{ quizz.reponse51 }}">
+					<label for="userreponse13">{{ quizz.reponse51 }}</label><br>
+
+					<input type="radio" id="userreponse14" name="userreponse5" value="{{ quizz.reponse52 }}">
+					<label for="userreponse14">{{ quizz.reponse52 }}</label><br>
+
+					<input type="radio" id="userreponse15" name="userreponse5" value="{{ quizz.reponse53 }}">
+					<label for="userreponse15">{{ quizz.reponse53 }}</label><br>
+				</div>
+			</div>
+
+			<div class="submit-container">
+				<button type="submit" class="submit-btn">Soumettre</button>
+			</div>
+		</form>
+	</div>
 {% endblock %}

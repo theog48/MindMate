@@ -5,6 +5,31 @@
 {% block body %}
     <h1>User</h1>
 
+    {# Display Flash Messages as Alerts #}
+    {% for label, messages in app.session.flashBag.all() %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+        <!-- Alerts Displayed Before Form -->
+{# {% if app.user %}
+    {% if is_granted('ROLE_PAID') %}
+        <div class="alert alert-info">You are logged in as a paid user.</div>
+    {% elseif is_granted('ROLE_USER') %}
+        <div class="alert alert-warning">You are logged in as an unpaid user.</div>
+    {% endif %}
+
+    <div class="mb-3">
+        You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+    </div>
+{% else %}
+    <div class="alert alert-secondary">You are not logged in.</div>
+{% endif %} #}
+
+
     <table class="table">
         <tbody>
             <tr>

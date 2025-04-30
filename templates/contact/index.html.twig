@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contactez-nous - MindMate
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1 class="text-center my-5">CONTACTEZ NOUS !</h1>
+
+		<div class="text-center mb-5">
+			<p>Des questions, une curiosité, un souci d'inscription ou de paiement ?</p>
+			<p>Écrivez-nous, nous sommes là pour vous aider !</p>
+		</div>
+
+		<div class="contact-form-container mx-auto p-4 bg-dark text-white rounded">
+			<form action="{{ path('app_contact_send') }}" method="post">
+				<div class="mb-3">
+					<label for="nom_prenom" class="form-label">Nom & Prénoms</label>
+					<input type="text" class="form-control" id="nom_prenom" name="nom_prenom" required>
+				</div>
+
+				<div class="mb-3">
+					<label for="email" class="form-label">Email</label>
+					<input type="email" class="form-control" id="email" name="email" required>
+				</div>
+
+				<div class="mb-3">
+					<label for="objet" class="form-label">Objet</label>
+					<input type="text" class="form-control" id="objet" name="objet" required>
+				</div>
+
+				<div class="mb-3">
+					<label for="message" class="form-label">Votre message</label>
+					<textarea class="form-control" id="message" name="message" rows="6" required></textarea>
+				</div>
+
+				<div class="text-center">
+					<button type="submit" class="btn btn-light">ENVOYEZ</button>
+				</div>
+			</form>
+		</div>
+	</div>
+{% endblock %}
