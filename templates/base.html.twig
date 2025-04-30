@@ -20,16 +20,16 @@
 		<!-- ✨ Add this block -->
 		{% block navbar %}
 			<nav id="navbar">
-				<a href="http://localhost:8000/" id="logo-container">MINDMATE</a>
+				<a href="{{ path('app_home_page') }}" id="logo-container">MINDMATE</a>
 
 				<ul id="nav-list">
 					{% if app.user %}
-						<li>
-							<a href="http://localhost:8000/">Home</a>
-						</li>
-						<li>
-							<a href="http://localhost:8000/profil">Profil</a>
-						</li>
+				<li>
+					<a href="{{ path('app_home_page') }}">Home</a>
+				</li>
+				<li>
+					<a href="{{ path('app_profil') }}">Profil</a>
+				</li>
 					{% else %}
 						<li>
 							<a href="#features">Features</a>
@@ -73,9 +73,9 @@
 						<li>
 							<a href="#prix">Prix</a>
 						</li>
-						<li>
+						{# <li>
 							<a href="/contact">Contact</a>
-						</li>
+						</li> #}
 					</ul>
 					<div id="social-icons">
 						<a href="#"><img src="{{ asset('assets/logo/facebook.svg') }}" alt="Facebook"></a>
