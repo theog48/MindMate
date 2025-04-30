@@ -209,6 +209,7 @@ body {
 .faq-answer p {
     margin: 0;
     padding: 0 1rem;
+    color: black;
 }
 
 .arrow {
@@ -231,7 +232,6 @@ h1 {
     margin-bottom: 0.5rem;
     color: #0c0c0c;
     font-family: 'Bungee';
-    font-style: bold;
     margin-bottom: 30px;
 }
 
