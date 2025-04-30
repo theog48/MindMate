@@ -49,30 +49,29 @@ final class QuizzController extends AbstractController
         $score = 0;
         $form = $this->createForm(ReponseType::class, $quizz);
         $form->handleRequest($request);
-        var_dump($form->isSubmitted());
         if ($form->isSubmitted() && $form->isValid()) {
-            if($quizz->getUserreponse1() === $quizz->getBonnereponse1()) {
-                $score++;
-            } 
-            if($quizz->getReponseUser2() === $quizz->getBonneReponse2()) {
+            if ($quizz->getUserreponse1() === $quizz->getBonnereponse1()) {
                 $score++;
             }
-            if($quizz->getReponseUser3() === $quizz->getBonneReponse3()) {
+            if ($quizz->getReponseUser2() === $quizz->getBonneReponse2()) {
                 $score++;
             }
-            if($quizz->getReponseUser4() === $quizz->getBonneReponse4()) {
+            if ($quizz->getReponseUser3() === $quizz->getBonneReponse3()) {
                 $score++;
             }
-            if($quizz->getReponseUser5() === $quizz->getBonneReponse5()) {
+            if ($quizz->getReponseUser4() === $quizz->getBonneReponse4()) {
                 $score++;
             }
-            $quizz->setScore($score);            
+            if ($quizz->getReponseUser5() === $quizz->getBonneReponse5()) {
+                $score++;
+            }
+            $quizz->setScore($score);
             $entityManager->persist($quizz);
             $entityManager->flush();
 
             return $this->render('quizz/results.html.twig', [
                 'quizz' => $quizz,
-                
+
             ]);
         }
 
@@ -89,7 +88,7 @@ final class QuizzController extends AbstractController
         $score = 0;
 
 
-        
+
 
 
         // if ($data->get('userreponse1') === $quizz->getBonnereponse1()) $score++;
