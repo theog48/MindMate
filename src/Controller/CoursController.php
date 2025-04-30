@@ -242,10 +242,8 @@ final class CoursController extends AbstractController
                 $entityManager->persist($cour);
                 $entityManager->flush();
     
-                return $this->render('cours/new.html.twig', [
-                    'form' => $form,
-                    'response' => $response,
-                    'token' => $token,
+                return $this->redirectToRoute('app_quizz_show',[
+                    'id' => $quizz->getId(),
                 ]);
             }
         }
