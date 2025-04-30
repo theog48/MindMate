@@ -9,7 +9,9 @@
 
 	<h1>{{ quizz.titre }}</h1>
 
-	<form action="{{ path('app_quizz_submit_response', { id: quizz.id }) }}" method="post" onsubmit="return calculerScore();">
+	{{ include('quizz/_form2.html.twig') }}
+
+	{# <form action="{{ path('app_quizz_submit_response', { id: quizz.id }) }}" method="post" onsubmit="return calculerScore();">
 		<div>
 			<p>
 				<strong>1.
@@ -78,129 +80,8 @@
 		<input type="hidden" name="score" id="score" value="0">
 		<br>
 		<button type="submit">Voir mon score</button>
-	</form>
+	</form> #}
+	
 
-	<script>
-		function calculerScore() {
-let score = 0;
-
-const bonnesReponses = [
-"{{ quizz.bonnereponse1|e('js') }}",
-"{{ quizz.bonneReponse2|e('js') }}",
-"{{ quizz.bonneReponse3|e('js') }}",
-"{{ quizz.bonneReponse4|e('js') }}",
-"{{ quizz.bonneReponse5|e('js') }}"
-];
-
-for (let i = 1; i <= 5; i++) {
-const checked = document.querySelector (`input[name="q${i}"]:checked`);
-if (checked && checked.value.trim().toLowerCase() === bonnesReponses[i - 1].trim().toLowerCase()) {
-score++;
-}
-}
-
-document.getElementById('score').value = score;
-return true;
-}
-	</script>
-
-	<div class="quiz-container">
-		<h1>{{ quizz.titre }}</h1>
-
-		<form action="{{ path('app_quizz_submit_response', {'id': quizz.id}) }}" method="POST" class="quiz-form">
-			<div class="question-container">
-				<label for="userreponse1">{{ quizz.question1 }}</label><br>
-				<div class="answer-options">
-					<input type="radio" id="userreponse1" name="userreponse1" value="{{ quizz.reponse11 }}">
-					<label for="userreponse1">{{ quizz.reponse11 }}</label><br>
-
-					<input type="radio" id="userreponse2" name="userreponse1" value="{{ quizz.reponse12 }}">
-					<label for="userreponse2">{{ quizz.reponse12 }}</label><br>
-
-					<input type="radio" id="userreponse3" name="userreponse1" value="{{ quizz.reponse13 }}">
-					<label for="userreponse3">{{ quizz.reponse13 }}</label><br>
-				</div>
-			</div>
-
-
-	<div class="quiz-container">
-		<h1>{{ quizz.titre }}</h1>
-
-		<form action="{{ path('app_quizz_submit_response', {'id': quizz.id}) }}" method="POST" class="quiz-form">
-			<div class="question-container">
-				<label for="userreponse1">{{ quizz.question1 }}</label><br>
-				<div class="answer-options">
-					<input type="radio" id="userreponse1" name="userreponse1" value="{{ quizz.reponse11 }}">
-					<label for="userreponse1">{{ quizz.reponse11 }}</label><br>
-
-					<input type="radio" id="userreponse2" name="userreponse1" value="{{ quizz.reponse12 }}">
-					<label for="userreponse2">{{ quizz.reponse12 }}</label><br>
-
-					<input type="radio" id="userreponse3" name="userreponse1" value="{{ quizz.reponse13 }}">
-					<label for="userreponse3">{{ quizz.reponse13 }}</label><br>
-				</div>
-			</div>
-
-
-			<div class="question-container">
-				<label for="userreponse2">{{ quizz.question2 }}</label><br>
-				<div class="answer-options">
-					<input type="radio" id="userreponse4" name="userreponse2" value="{{ quizz.reponse21 }}">
-					<label for="userreponse4">{{ quizz.reponse21 }}</label><br>
-
-					<input type="radio" id="userreponse5" name="userreponse2" value="{{ quizz.reponse22 }}">
-					<label for="userreponse5">{{ quizz.reponse22 }}</label><br>
-
-					<input type="radio" id="userreponse6" name="userreponse2" value="{{ quizz.reponse23 }}">
-					<label for="userreponse6">{{ quizz.reponse23 }}</label><br>
-				</div>
-			</div>
-
-			<div class="question-container">
-				<label for="userreponse3">{{ quizz.question3 }}</label><br>
-				<div class="answer-options">
-					<input type="radio" id="userreponse7" name="userreponse3" value="{{ quizz.reponse31 }}">
-					<label for="userreponse7">{{ quizz.reponse31 }}</label><br>
-
-					<input type="radio" id="userreponse8" name="userreponse3" value="{{ quizz.reponse32 }}">
-					<label for="userreponse8">{{ quizz.reponse32 }}</label><br>
-
-					<input type="radio" id="userreponse9" name="userreponse3" value="{{ quizz.reponse33 }}">
-					<label for="userreponse9">{{ quizz.reponse33 }}</label><br>
-				</div>
-			</div>
-
-			<div class="question-container">
-				<label for="userreponse4">{{ quizz.question4 }}</label><br>
-				<div class="answer-options">
-					<input type="radio" id="userreponse10" name="userreponse4" value="{{ quizz.reponse41 }}">
-					<label for="userreponse10">{{ quizz.reponse41 }}</label><br>
-
-					<input type="radio" id="userreponse11" name="userreponse4" value="{{ quizz.reponse42 }}">
-					<label for="userreponse11">{{ quizz.reponse42 }}</label><br>
-
-					<input type="radio" id="userreponse12" name="userreponse4" value="{{ quizz.reponse43 }}">
-					<label for="userreponse12">{{ quizz.reponse43 }}</label><br>
-				</div>
-			</div>
-
-			<div class="question-container">
-				<label for="userreponse5">{{ quizz.question5 }}</label><br>
-				<div class="answer-options">
-					<input type="radio" id="userreponse13" name="userreponse5" value="{{ quizz.reponse51 }}">
-					<label for="userreponse13">{{ quizz.reponse51 }}</label><br>
-
-					<input type="radio" id="userreponse14" name="userreponse5" value="{{ quizz.reponse52 }}">
-					<label for="userreponse14">{{ quizz.reponse52 }}</label><br>
-
-					<input type="radio" id="userreponse15" name="userreponse5" value="{{ quizz.reponse53 }}">
-					<label for="userreponse15">{{ quizz.reponse53 }}</label><br>
-				</div>
-			</div>
-
-			<div class="submit-container">
-				<button type="submit" class="submit-btn">Soumettre</button>
-			</div>
-		</form>
-	</div>
+	
 {% endblock %}
