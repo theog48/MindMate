@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Quizz;
 use App\Form\QuizzType;
 use App\Repository\QuizzRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -50,34 +51,6 @@ final class QuizzController extends AbstractController
     }
 
     #[Route('/{id}/submit', name: 'app_quizz_submit_response', methods: ['POST'])]
-    public function submitResponse(Request $request, Quizz $quizz): Response
-    {
-        $score = $request->request->getInt('score');
-
-        return $this->redirectToRoute('app_quizz_results', [
-            'id' => $quizz->getId(),
-            'score' => $score,
-        ]);
-    }
-
-    #[Route('/{id}/delete', name: 'app_quizz_delete', methods: ['POST'])]
-    public function delete(Request $request, Quizz $quizz, EntityManagerInterface $entityManager): Response
-    {
-        $score = $request->query->getInt('score');
-
-<<<<<<< Updated upstream
-        // Récupération des questions et des réponses
-        $questions = [
-            ['question' => $quizz->getQuestion1(), 'reponse1' => $quizz->getReponse11(), 'reponse2' => $quizz->getReponse12(), 'reponse3' => $quizz->getReponse13(), 'bonneReponse' => $quizz->getBonnereponse1(), 'userReponse' => $quizz->getUserreponse1()],
-            ['question' => $quizz->getQuestion2(), 'reponse1' => $quizz->getReponse21(), 'reponse2' => $quizz->getReponse22(), 'reponse3' => $quizz->getReponse23(), 'bonneReponse' => $quizz->getBonneReponse2(), 'userReponse' => $quizz->getReponseUser2()],
-            ['question' => $quizz->getQuestion3(), 'reponse1' => $quizz->getReponse31(), 'reponse2' => $quizz->getReponse32(), 'reponse3' => $quizz->getReponse33(), 'bonneReponse' => $quizz->getBonneReponse3(), 'userReponse' => $quizz->getReponseUser3()],
-            ['question' => $quizz->getQuestion4(), 'reponse1' => $quizz->getReponse41(), 'reponse2' => $quizz->getReponse42(), 'reponse3' => $quizz->getReponse43(), 'bonneReponse' => $quizz->getBonneReponse4(), 'userReponse' => $quizz->getReponseUser4()],
-            ['question' => $quizz->getQuestion5(), 'reponse1' => $quizz->getReponse51(), 'reponse2' => $quizz->getReponse52(), 'reponse3' => $quizz->getReponse53(), 'bonneReponse' => $quizz->getBonneReponse5(), 'userReponse' => $quizz->getReponseUser5()],
-        ];
-
-=======
->>>>>>> Stashed changes
-    #[Route('/{id}/submit', name: 'app_quizz_submit_response', methods: ['POST'])]
     public function submitResponse(Request $request, Quizz $quizz, EntityManagerInterface $em): Response
     {
         $data = $request->request;
@@ -100,10 +73,26 @@ final class QuizzController extends AbstractController
 
         $em->flush();
 
-        // REDIRECT vers page de résultats
         return $this->redirectToRoute('app_quizz_results', [
             'id' => $quizz->getId(),
         ]);
+    }
+
+    #[Route('/{id}/delete', name: 'app_quizz_delete', methods: ['POST'])]
+    public function delete(Request $request, Quizz $quizz, EntityManagerInterface $entityManager): Response
+    {
+        $score = $request->query->getInt('score');
+
+        $questions = [
+            ['question' => $quizz->getQuestion1(), 'reponse1' => $quizz->getReponse11(), 'reponse2' => $quizz->getReponse12(), 'reponse3' => $quizz->getReponse13(), 'bonneReponse' => $quizz->getBonnereponse1(), 'userReponse' => $quizz->getUserreponse1()],
+            ['question' => $quizz->getQuestion2(), 'reponse1' => $quizz->getReponse21(), 'reponse2' => $quizz->getReponse22(), 'reponse3' => $quizz->getReponse23(), 'bonneReponse' => $quizz->getBonneReponse2(), 'userReponse' => $quizz->getReponseUser2()],
+            ['question' => $quizz->getQuestion3(), 'reponse1' => $quizz->getReponse31(), 'reponse2' => $quizz->getReponse32(), 'reponse3' => $quizz->getReponse33(), 'bonneReponse' => $quizz->getBonneReponse3(), 'userReponse' => $quizz->getReponseUser3()],
+            ['question' => $quizz->getQuestion4(), 'reponse1' => $quizz->getReponse41(), 'reponse2' => $quizz->getReponse42(), 'reponse3' => $quizz->getReponse43(), 'bonneReponse' => $quizz->getBonneReponse4(), 'userReponse' => $quizz->getReponseUser4()],
+            ['question' => $quizz->getQuestion5(), 'reponse1' => $quizz->getReponse51(), 'reponse2' => $quizz->getReponse52(), 'reponse3' => $quizz->getReponse53(), 'bonneReponse' => $quizz->getBonneReponse5(), 'userReponse' => $quizz->getReponseUser5()],
+        ];
+
+        // Traitement spécifique à ajouter si besoin
+        return $this->redirectToRoute('app_quizz_index');
     }
 
     #[Route('/{id}/results', name: 'app_quizz_results', methods: ['GET'])]
