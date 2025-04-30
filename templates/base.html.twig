@@ -1,71 +1,92 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>"> 
-        <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-        {% block stylesheets %}{% endblock %}
-        {% block javascripts %}
-            {% block importmap %}
-                {{ importmap('app') }}
-            {% endblock %}
-        {% endblock %}
-    </head>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+		<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"> {% block stylesheets %}{% endblock %}
+		{% block javascripts %}
+			{% block importmap %}
+				{{ importmap('app') }}
+			{% endblock %}
+		{% endblock %}
+	</head>
 
-    <body data-turbo='false'>
-        <!-- ✨ Add this block -->
-        {% block navbar %}
-<nav id="navbar">
-    <a href="http://localhost:8000/" id="logo-container">MINDMATE</a>
+	<body
+		data-turbo='false'>
+		<!-- ✨ Add this block -->
+		{% block navbar %}
+			<nav id="navbar">
+				<a href="{{ path('app_home_page') }}" id="logo-container">MINDMATE</a>
 
-<ul id="nav-list">
-    {% if app.user %}
-        <li><a href="http://localhost:8000/">Home</a></li>
-        <li><a href="http://localhost:8000/profil">Profil</a></li>
-    {% else %}
-        <li><a href="#features">Features</a></li>
-        <li><a href="#prix">Prix</a></li>
-        <li><a href="#avis">Avis</a></li>
-        <li><a href="#faq">FAQ</a></li>
-    {% endif %}
-</ul>
+				<ul id="nav-list">
+					{% if app.user %}
+				<li>
+					<a href="{{ path('app_home_page') }}">Home</a>
+				</li>
+				<li>
+					<a href="{{ path('app_profil') }}">Profil</a>
+				</li>
+					{% else %}
+						<li>
+							<a href="#features">Features</a>
+						</li>
+						<li>
+							<a href="#prix">Prix</a>
+						</li>
+						<li>
+							<a href="#avis">Avis</a>
+						</li>
+						<li>
+							<a href="#faq">FAQ</a>
+						</li>
+					{% endif %}
+				</ul>
 
-    <div id="links">
-        {% if app.user %}
-            <a href="{{ path('app_profil') }}" id="user-name">Bonjour, {{ app.user.nom }}</a>
-            <a href="{{ path('app_logout') }}" id="logout-button">Logout</a>
-        {% else %}
-            <a href="{{ path('app_login') }}" id="login-button">Login</a>
-            <a href="{{ path('app_register') }}" id="register-button">Register</a>
-        {% endif %}
-    </div>
-</nav>
-        {% endblock %}
-        <!-- ✨ End of navbar block -->
+				<div id="links">
+					{% if app.user %}
+						<a href="{{ path('app_profil') }}" id="user-name">Bonjour,
+							{{ app.user.nom }}</a>
+						<a href="{{ path('app_logout') }}" id="logout-button">Logout</a>
+					{% else %}
+						<a href="{{ path('app_login') }}" id="login-button">Login</a>
+						<a href="{{ path('app_register') }}" id="register-button">Register</a>
+					{% endif %}
+				</div>
+			</nav>
+		{% endblock %}
+		<!-- ✨ End of navbar block -->
 
-        {% block body %}{% endblock %}
+		{% block body %}{% endblock %}
 
-        <!-- footer -->
-        <footer>
-            <section class="footer-container">
-                <div id="footer-top">
-                    <ul id="footer-list">
-                        <li><a href="#about">Home</a></li>
-                        <li><a href="#contact">Prix</a></li>
-                        <li><a href="#Contact">Contact</a></li>
-                        <li><a href="#terms">Terms</a></li>
-                    </ul>
-                    <div id="social-icons">
-                        <a href="#"><img src="{{ asset('assets/logo/facebook.svg') }}" alt="Facebook"></a>
-                        <a href="#"><img src="{{ asset('assets/logo/instagram.svg') }}" alt="Instagram"></a>
-                        <a href="#"><img src="{{ asset('assets/logo/x.svg') }}" alt="Twitter"></a>
-                    </div>
-                </div>
-                <div id="footer-bottom">
-                    <p>&copy; 2025 MINDMATE. All rights reserved.</p>
-                </div>
-            </section>
-        </footer>
-    </body>
+		<!-- footer -->
+		<footer>
+			<section class="footer-container">
+				<div id="footer-top">
+					<ul id="footer-list">
+						<li>
+							<a href="/">Home</a>
+						</li>
+						<li>
+							<a href="#prix">Prix</a>
+						</li>
+						{# <li>
+							<a href="/contact">Contact</a>
+						</li> #}
+					</ul>
+					<div id="social-icons">
+						<a href="#"><img src="{{ asset('assets/logo/facebook.svg') }}" alt="Facebook"></a>
+						<a href="#"><img src="{{ asset('assets/logo/instagram.svg') }}" alt="Instagram"></a>
+						<a href="#"><img src="{{ asset('assets/logo/x.svg') }}" alt="Twitter"></a>
+					</div>
+				</div>
+				<div id="footer-bottom">
+					<p>&copy; 2025 MINDMATE. All rights reserved.</p>
+				</div>
+			</section>
+		</footer>
+	</body>
 </html>

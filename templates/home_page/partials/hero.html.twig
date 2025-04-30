@@ -1,37 +1,36 @@
-<section class="hero-block hero-academic">
-    <div class="hero-text">
-        <h1>Bienvenue sur</h1>
-        <h1 id="mind"><span class="highlight strong">MindMate</span></h1>
-        <p class="lead">
-            Votre allié pour apprendre <span class="highlight">plus vite</span> et <span class="highlight">mieux</span>
-        </p>
-    </div>
-    <img src="{{ asset('assets/images/hero1.png') }}" alt="Image Hero 1">
+<section id="hero" class="hero-block hero-academic">
+	<div class="hero-text">
+		<h1>Bienvenue sur</h1>
+		<h1 id="mind">
+			<span class="highlight strong">MindMate</span>
+		</h1>
+		<p class="lead">
+			Votre allié pour apprendre
+			<span class="highlight">plus vite</span>
+			et
+			<span class="highlight">mieux</span>
+		</p>
+	</div>
+	<img src="{{ asset('assets/images/hero1.png') }}" alt="Image Hero 1">
 </section>
-
-
-
-
 
 
 <!-- Hero 2 Block -->
 <section class="hero-block hero-engaging">
-    <div class="hero-content">
-        <img src="{{ asset('assets/images/hero2.png') }}" alt="Image Hero 2">
-        <div class="text">
-            <p>
-                <span class="strong title">MINDMATE</span> simplifie l'apprentissage avec des résumés clairs 
-                et des quiz interactifs, adaptés aux étudiants, professionnels et curieux.
-            </p>
+	<div class="hero-content">
+		<img src="{{ asset('assets/images/hero2.png') }}" alt="Image Hero 2">
+		<div class="text">
+			<p>
+				<span class="strong title">MINDMATE</span>
+				simplifie l'apprentissage avec des résumés clairs 
+				                et des quiz interactifs, adaptés aux étudiants, professionnels et curieux.
+			</p>
 
-            {% if app.user %}
-                <a href="http://localhost:8000/profil" id="inscription">ACCÉDER À MON ESPACE</a>
-            {% else %}
-                <p id="inscription">INSCRIVEZ-VOUS MAINTENANT</p>
-            {% endif %}
-        </div>
-    </div>
+			{% if app.user %}
+				<a href="http://localhost:8000/profil" id="inscription">ACCÉDER À MON ESPACE</a>
+			{% else %}
+				<p id="inscription">INSCRIVEZ-VOUS MAINTENANT</p>
+			{% endif %}
+		</div>
+	</div>
 </section>
-
-
-
