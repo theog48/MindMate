@@ -265,7 +265,9 @@ h4 {
     text-align: center;
     font-family: 'Lato', sans-serif;
 }
-
+.commentaires-container p{
+    color: black;
+}
 /* First card */
 .commentaires-container .card:nth-child(1) {
     background-color: #030E1F;
@@ -764,6 +766,20 @@ h1 {
     /* Optional spacing */
 }
 
+
+.table-action-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; 
+}
+
+.table-action-no-form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+
 .create-button {
     text-align: center;
     text-decoration: none;
@@ -862,3 +878,290 @@ h1 {
 #inscription:hover {
     background-color: #90D9C0;
 }
+
+
+
+/* 🌟 Ensure Buttons Have Their Own Unique Styles */
+.btn-show, .btn-edit, .btn-delete {
+    all: unset; /* Removes inherited styles */
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* 🔘 Show Button */
+.btn-show {
+    background-color: #007bff;
+    color: white;
+    transition: background 0.3s ease;
+}
+
+.btn-show:hover {
+    background-color: #0056b3;
+}
+
+/* ✏️ Edit Button */
+.btn-edit {
+    background-color: #ffc107;
+    color: black;
+    transition: background 0.3s ease;
+}
+
+.btn-edit:hover {
+    background-color: #d39e00;
+}
+
+/* ❌ Delete Button */
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    transition: background 0.3s ease;
+}
+
+.btn-delete:hover {
+    background-color: #b02a37;
+}
+
+/* 📌 Fix Button Alignment */
+.table-action-form {
+    display: flex;
+    gap: 10px;
+}
+
+
+
+
+.faq-section {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.intro {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.intro h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.intro .subtitle {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.faq-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.faq-item {
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    border: solid #030E1F;
+    border-width: 3px 3px 9px 3px;
+    overflow: hidden;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    cursor: pointer;
+}
+
+.faq-question h3 {
+    margin: 0;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.faq-answer {
+    display: none;
+    padding: 16px;
+    background-color: white;
+    border-top: 1px solid #ccc;
+}
+
+.faq-item.open .faq-answer {
+    display: block;
+}
+
+.arrow {
+    font-size: 1.5em;
+    transform: rotate(0deg);
+    transition: transform 0.2s;
+}
+
+.faq-item.open .arrow {
+    transform: rotate(180deg);
+}
+
+.features-section {
+    font-family: sans-serif;
+    background: #e2e2e2;
+    padding: 40px 20px;
+}
+
+.features-section h2 {
+    font-size: 2em;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.intro-content {
+    background-color: #1d3749;
+    padding: 20px;
+    color: white;
+    border-radius: 8px;
+    border: solid #030E1F;
+    border-width: 3px 3px 9px 3px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.intro-content h3 {
+    font-size: 1.5em;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.intro-body {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.intro-body img {
+    width: 250px;
+    border-radius: 10px;
+}
+
+.intro-body p {
+    flex: 1;
+    min-width: 300px;
+}
+
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.feature-box {
+    background-color: #4E8A7D;
+    color: white;
+    padding: 65px;
+    width: 300px;
+    border-radius: 8px;
+    border: solid #030E1F;
+    border-width: 3px 3px 9px 3px;
+}
+
+.feature-box h4 {
+    font-size: 1.4em;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.feature-box p {
+    margin-top: 5px;
+}
+
+.feature-box ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.feature-box li {
+    margin-bottom: 8px;
+}
+
+.prix-section {
+    background: #e3e3e3;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.prix-section h2 {
+    font-family: 'Bungee';
+    font-size: 32px;
+    margin-bottom: 40px;
+
+}
+
+.prix-plans {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.plan {
+    margin: 0 30px;
+    background-color: #659D8D;
+    color: white;
+    width: 300px;
+    padding: 30px 20px;
+    border-radius: 8px;
+    border: solid #030E1F;
+    border-width: 3px 3px 9px 3px;
+}
+
+.plan.premium {
+    background-color: #336B72;
+}
+.plan h3 {
+    font-weight: 800;
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-family: 'Bungee';
+}
+
+.price {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.plan table {
+    width: 100%;
+    margin: 20px 0;
+    font-size: 15px;
+}
+
+.plan table td {
+    padding: 5px;
+    text-align: left;
+}
+
+.note {
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.example-wrapper {
+    margin: 1em auto;
+    max-width: 800px; 
+    width: 95%;
+    font: 18px/1.5 sans-serif;
+}
+.example-wrapper code {
+    background: #F5F5F5;
+    padding: 2px 6px;
+}
+

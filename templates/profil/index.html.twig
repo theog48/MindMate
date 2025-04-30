@@ -30,9 +30,12 @@
                             <a href="{{ path('app_cours_show', {'id': cours.id}) }}" class="btn btn-show">Show</a>
 
                             <a href="{{ path('app_cours_edit', {'id': cours.id}) }}" class="btn btn-edit">Edit</a>
-                            <form class="table-action-form" method="post" action="{{ path('app_cours_delete', {'id': cours.id}) }}" onsubmit="return confirm('Are you sure you want to delete this course?');">
+                            
+                            {# <a href="{{ path('app_cours_delete', {'id': cours.id}) }}" class="btn btn-edit">Delete</a> #}
+
+                            {# <form class="table-action-no-form" style="" method="post" action="{{ path('app_cours_delete', {'id': cours.id}) }}" onsubmit="return confirm('Are you sure you want to delete this course?');">
                                 <button type="submit" class="btn-delete">Delete</button>
-                            </form>
+                            </form> #}
 
                         </div>
                     </td>
@@ -45,7 +48,7 @@
         </tbody>
     </table>
         <div class="button-container">
-        <a href="{{ path('app_user_new') }}" class="create-button">Create new</a>
+        <a href="{{ path('app_cours_new') }}" class="create-button">Create new</a>
     </div>
 
 {% endblock %}
