@@ -262,7 +262,9 @@ h4{
     text-align: center;
     font-family: 'Lato', sans-serif;
 }
-
+.commentaires-container p{
+    color: black;
+}
 /* First card */
 .commentaires-container .card:nth-child(1) {
     background-color: #030E1F;
