@@ -235,19 +235,22 @@ h1 {
     margin-bottom: 30px;
 }
 
-h2{
+h2 {
     font-family: 'Bungee';
 }
 
-h3{
+h3 {
     font-family: 'Bungee';
 }
-h4{
+
+h4 {
     font-family: 'Bungee';
 }
-.titre{
+
+.titre {
     color: black;
 }
+
 .comment-content {
     font-family: 'Lato', sans-serif;
 }
@@ -755,8 +758,10 @@ h1 {
 .button-container {
     display: flex;
     justify-content: center;
-    align-items: center; /* Optional: centers vertically if you want */
-    margin: 20px 0; /* Optional spacing */
+    align-items: center;
+    /* Optional: centers vertically if you want */
+    margin: 20px 0;
+    /* Optional spacing */
 }
 
 
@@ -783,7 +788,8 @@ h1 {
     padding: 10px 20px;
     border-radius: 6px;
     transition: 0.3s ease, transform 0.2s ease;
-    width: 150px; /* Fixed width */
+    width: 150px;
+    /* Fixed width */
 }
 
 /* 🚀 Hover Effect */

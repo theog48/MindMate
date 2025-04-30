@@ -1,82 +1,195 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 {% extends 'base.html.twig' %}
 
-{% block title %}Résultat -
-	{{ quizz.titre }}
+{% block title %}Résultats du quiz
 {% endblock %}
 
 {% block body %}
-	<h1>Résultats du quiz :
-		{{ quizz.titre }}</h1>
+	<div class="quiz-container" style="max-width: 900px; margin: auto;">
 
-	<p>Votre score :
-		<strong>{{ score }}/5</strong>
-	</p>
+		<h2 class="quiz-title" style="text-align: center; margin-bottom: 30px; color: #030e1f;">
+			Résultats du quiz :
+			{{ quizz.titre }}
+		</h2>
 
-	<div class="correction">
-		{% for question in questions %}
-			<div class="question-block">
-				<h2>{{ loop.index }}.
-					{{ question.intitule }}</h2>
-
-				{% set userAnswer = userAnswers[question.id] ?? 'Aucune réponse' %}
-				{% set correctAnswer = question.reponseCorrecte %}
-
-				{% if userAnswer == correctAnswer %}
-					<p class="good-answer">✅ Bonne réponse !</p>
-				{% else %}
-					<p class="wrong-answer">❌ Mauvaise réponse</p>
-					<p class="info-correction">Votre réponse :
-						<strong>{{ userAnswer }}</strong>
-					</p>
-					<p class="info-correction">Bonne réponse :
-						<strong>{{ correctAnswer }}</strong>
-					</p>
-				{% endif %}
+		<div class="quiz-result">
+			<div class="quiz-question {% if quizz.userreponse1 == quizz.bonnereponse1 %}correct{% else %}incorrect{% endif %}" style="background-color: {% if quizz.userreponse1 == quizz.bonnereponse1 %}#d4edda{% else %}#f8d7da{% endif %};
+										padding: 20px;
+										border-radius: 8px;
+										border: solid #030E1F;
+										border-width: 3px;
+										width: 100%;
+										margin-bottom: 20px;">
+				<div class="question-header" style="display: flex; justify-content: space-between;">
+					<h3>Question 1 :</h3>
+					<span class="result-icon">
+						{% if quizz.userreponse1 == quizz.bonnereponse1 %}
+							✅ Vrai
+						{% else %}
+							❌ Faux
+						{% endif %}
+					</span>
+				</div>
+				<p class="question-text" style="text-align: center; color: #030e1f;">{{ quizz.question1 }}</p>
+				<p class="answer" style="text-align: center; color: #030e1f;">
+					<u>
+						<strong>Votre réponse :</strong>
+					</u>
+					<strong>{{ quizz.userreponse1 }}</strong>
+				</p>
+				<p class="answer" style="text-align: center; color: #030e1f;">
+					<u>
+						<strong>Bonne réponse :</strong>
+					</u>
+					<strong>{{ quizz.bonnereponse1 }}</strong>
+				</p>
 			</div>
-		{% endfor %}
+
+			<div class="quiz-question {% if quizz.reponseUser2 == quizz.bonneReponse2 %}correct{% else %}incorrect{% endif %}" style="background-color: {% if quizz.reponseUser2 == quizz.bonneReponse2 %}#d4edda{% else %}#f8d7da{% endif %};
+										padding: 20px;
+										border-radius: 8px;
+										border: solid #030E1F;
+										border-width: 3px;
+										width: 100%;
+										margin-bottom: 20px;">
+				<div class="question-header" style="display: flex; justify-content: space-between;">
+					<h3>Question 2 :</h3>
+					<span class="result-icon">
+						{% if quizz.reponseUser2 == quizz.bonneReponse2 %}
+							✅ Vrai
+						{% else %}
+							❌ Faux
+						{% endif %}
+					</span>
+				</div>
+				<p class="question-text" style="text-align: center; color: #030e1f;">{{ quizz.question2 }}</p>
+				<p class="answer" style="text-align: center; color: #030e1f;">
+					<u>
+						<strong>Votre réponse :</strong>
+					</u>
+					<strong>{{ quizz.reponseUser2 }}</strong>
+				</p>
+				<p class="answer" style="text-align: center; color: #030e1f;">
+					<u>
+						<strong>Bonne réponse :</strong>
+					</u>
+					<strong>{{ quizz.bonneReponse2 }}</strong>
+				</p>
+			</div>
+
+			<div class="quiz-question {% if quizz.reponseUser3 == quizz.bonneReponse3 %}correct{% else %}incorrect{% endif %}" style="background-color: {% if quizz.reponseUser3 == quizz.bonneReponse3 %}#d4edda{% else %}#f8d7da{% endif %};
+										padding: 20px;
+										border-radius: 8px;
+										border: solid #030E1F;
+										border-width: 3px;
+										width: 100%;
+										margin-bottom: 20px;">
+				<div class="question-header" style="display: flex; justify-content: space-between;">
+					<h3>Question 3 :</h3>
+					<span class="result-icon">
+						{% if quizz.reponseUser3 == quizz.bonneReponse3 %}
+							✅ Vrai
+						{% else %}
+							❌ Faux
+						{% endif %}
+					</span>
+				</div>
+				<p class="question-text" style="text-align: center; color: #030e1f;">{{ quizz.question3 }}</p>
+				<p class="answer" style="text-align: center; color: #030e1f;">
+					<u>
+						<strong>Votre réponse :</strong>
+					</u>
+					<strong>{{ quizz.reponseUser3 }}</strong>
+				</p>
+				<p class="answer" style="text-align: center; color: #030e1f;">
+					<u>
+						<strong>Bonne réponse :</strong>
+					</u>
+					<strong>{{ quizz.bonneReponse3 }}</strong>
+				</p>
+			</div>
+
+			<div class="quiz-question {% if quizz.reponseUser4 == quizz.bonneReponse4 %}correct{% else %}incorrect{% endif %}" style="background-color: {% if quizz.reponseUser4 == quizz.bonneReponse4 %}#d4edda{% else %}#f8d7da{% endif %};
+										padding: 20px;
+										border-radius: 8px;
+										border: solid #030E1F;
+										border-width: 3px;
+										width: 100%;
+										margin-bottom: 20px;">
+				<div class="question-header" style="display: flex; justify-content: space-between;">
+					<h3>Question 4 :</h3>
+					<span class="result-icon">
+						{% if quizz.reponseUser4 == quizz.bonneReponse4 %}
+							✅ Vrai
+						{% else %}
+							❌ Faux
+						{% endif %}
+					</span>
+				</div>
+				<p class="question-text" style="text-align: center; color: #030e1f;">{{ quizz.question4 }}</p>
+				<p class="answer" style="text-align: center; color: #030e1f;">
+					<u>
+						<strong>Votre réponse :</strong>
+					</u>
+					<strong>{{ quizz.reponseUser4 }}</strong>
+				</p>
+				<p class="answer" style="text-align: center; color: #030e1f;">
+					<u>
+						<strong>Bonne réponse :</strong>
+					</u>
+					<strong>{{ quizz.bonneReponse4 }}</strong>
+				</p>
+			</div>
+
+			<div class="quiz-question {% if quizz.reponseUser5 == quizz.bonneReponse5 %}correct{% else %}incorrect{% endif %}" style="background-color: {% if quizz.reponseUser5 == quizz.bonneReponse5 %}#d4edda{% else %}#f8d7da{% endif %};
+										padding: 20px;
+										border-radius: 8px;
+										border: solid #030E1F;
+										border-width: 3px;
+										width: 100%;
+										margin-bottom: 20px;">
+				<div class="question-header" style="display: flex; justify-content: space-between;">
+					<h3>Question 5 :</h3>
+					<span class="result-icon">
+						{% if quizz.reponseUser5 == quizz.bonneReponse5 %}
+							✅ Vrai
+						{% else %}
+							❌ Faux
+						{% endif %}
+					</span>
+				</div>
+				<p class="question-text" style="text-align: center; color: #030e1f;">{{ quizz.question5 }}</p>
+				<p class="answer" style="text-align: center; color: #030e1f;">
+					<u>
+						<strong>Votre réponse :</strong>
+					</u>
+					<strong>{{ quizz.reponseUser5 }}</strong>
+				</p>
+				<p class="answer" style="text-align: center; color: #030e1f;">
+					<u>
+						<strong>Bonne réponse :</strong>
+					</u>
+					<strong>{{ quizz.bonneReponse5 }}</strong>
+				</p>
+			</div>
+		</div>
+
+		<h3 style="text-align: center; color: #030e1f;">Score :
+			{{ quizz.score }}/5</h3>
+
+		<div style="text-align: center; margin-top: 30px;">
+			<a href="/profil" style="
+									background-color: #030e1f;
+									color: white;
+									padding: 10px 20px;
+									border: none;
+									border-radius: 6px;
+									text-decoration: none;
+									font-weight: bold;
+									transition: background-color 0.3s ease;
+								">
+				Retour au profil
+			</a>
+		</div>
+
 	</div>
-
-	<a class="retour-lien" href="{{ path('app_quizz_index') }}">↩️ Retour aux quiz</a>
-=======
-=======
->>>>>>> Stashed changes
-{# quizz/results.html.twig #}
-
-{% extends 'base.html.twig' %}
-
-{% block title %}Résultats du Quiz
-{% endblock %}
-
-{% block body %}
-	<h1>Résultats de votre quiz</h1>
-
-	<div class="result">
-		<h2>{{ quizz.name }}</h2>
-
-		<p>
-			<strong>Score obtenu :
-			</strong>
-			{{ quizz.score }}
-			/ 5</p>
-
-		{# Si le score le plus élevé est présent, on l'affiche #}
-		{% if quizz.bestScore is not null %}
-			<p>
-				<strong>Meilleur Score :
-				</strong>
-				{{ quizz.bestScore }}
-				(le
-				{{ quizz.bestScoreDate|date('d/m/Y') }})</p>
-		{% else %}
-			<p>Aucun meilleur score enregistré.</p>
-		{% endif %}
-
-		<a href="{{ path('app_quizz_index') }}">Retour à la liste des quiz</a>
-	</div>
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 {% endblock %}
